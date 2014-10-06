@@ -1,14 +1,11 @@
 # Get packages
-Version: **1.0.x**
 
 ## Simple example
-------
 ```javascript
 var gp = require('get-packages').init();
 ```
 
 ## Methods
-------
 * gp.init(config)
 * gp.build()
 * gp.get()
@@ -20,7 +17,5 @@ var gp = require('get-packages').init();
 * gp.getImagePaths()
 * gp.getFontPaths()
 
-
 ## Requirement
-------
 * Yii Packages command
