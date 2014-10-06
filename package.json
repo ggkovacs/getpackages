@@ -1,0 +1,23 @@
+{
+  "name": "get-packages",
+  "version": "0.1.0",
+  "description": "Yii Packages command Node.js wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ggkovacs/getpackages.git"
+  },
+  "author": "Gergely Kovács",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ggkovacs/getpackages/issues"
+  },
+  "homepage": "https://github.com/ggkovacs/getpackages",
+  "dependencies": {
+    "execSync": "^1.0.1-pre"
+  },
+  "engine": "node >= 0.10"
+}
