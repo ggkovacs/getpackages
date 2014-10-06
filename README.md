@@ -1,5 +1,7 @@
 # Get packages
 
+Yii Packages command Node.js wrapper
+
 ## Simple example
 ```javascript
 var gp = require('get-packages').init();
