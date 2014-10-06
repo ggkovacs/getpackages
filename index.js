@@ -10,7 +10,7 @@
     var sh = require('execSync');
     var minimatch = require('minimatch');
     var _ = require('lodash');
-    var sep = require('path').sep;
+    var path = require('path');
 
     /**
      * Init get packages
@@ -67,8 +67,8 @@
             }
         }
 
-        if (dirname.substr(-1) !== sep) {
-            dirname += sep;
+        if (dirname.substr(-1) !== path.sep) {
+            dirname += path.sep;
         }
 
         return dirname;
@@ -125,7 +125,8 @@
             }
         }
 
-        var packages = sh.exec(getDirname() + DEFAULTS.applicationPath + sep + DEFAULTS.yiiPackagesCommand);
+        var command = path.join(getDirname(), DEFAULTS.applicationPath, DEFAULTS.yiiPackagesCommand);
+        var packages = sh.exec(command);
 
         if (packages.code > 0) {
             if (DEFAULTS.debug) {
@@ -150,34 +151,41 @@
             this.distPaths.push(currentItem.dist);
 
             if (currentItem.cssfiles !== undefined) {
+                if (!Array.isArray(currentItem.cssfiles[0].sources)) {
+                    currentItem.cssfiles[0].sources = [currentItem.cssfiles[0].sources];
+                }
+
+                var sources = currentItem.cssfiles[0].sources[0];
+                if (currentItem.cssfiles[0].sources.length > 1) {
+                    sources = '{' + currentItem.cssfiles[0].sources.join(',') + '}';
+                }
+
+                currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
+                this.cssSrcPaths.push(currentItem.cssfiles[0].sources);
                 this.cssPaths.push(currentItem.cssfiles[0]);
-                this.cssSrcPaths.push(currentItem.cssfiles[0].sources + sep + '**' + sep + '*.{scss,sass}');
             }
 
             if (currentItem.jsfiles !== undefined) {
                 this.jsSrcFiles = this.jsSrcFiles.concat(currentItem.jsfiles[0].sources);
-
-                var dist = currentItem.jsfiles[0].dist.split(sep);
-                var concatFilename = dist.pop();
-
+                var concatFilename = path.basename(currentItem.jsfiles[0].dist);
                 this.jsToBuild.push({
                     'sources': currentItem.jsfiles[0].sources,
-                    'dest': dist.join(sep),
+                    'dest': currentItem.jsfiles[0].dist.replace(concatFilename, ''),
                     'concatFilename': concatFilename
                 });
             }
 
             if (currentItem.imgPath !== undefined) {
                 this.imgPaths.push({
-                    'sources': currentItem.sources + sep + currentItem.imgPath,
-                    'dest': currentItem.dist + sep + currentItem.imgPath
+                    'sources': path.join(currentItem.sources, currentItem.imgPath),
+                    'dest': path.join(currentItem.dist, currentItem.imgPath)
                 });
             }
 
             if (currentItem.fontPath !== undefined) {
                 this.fontPaths.push({
-                    'sources': currentItem.sources + sep + currentItem.fontPath,
-                    'dest': currentItem.dist + sep + currentItem.fontPath
+                    'sources': path.join(currentItem.sources, currentItem.fontPath),
+                    'dest': path.join(currentItem.dist, currentItem.fontPath)
                 });
             }
         }
@@ -201,10 +209,16 @@
 
     /**
      * Get all css paths
+     * @param  {String} glob
      * @return {Array}
      */
-    gp.getAllCssPath = function() {
-        return this.cssSrcPaths;
+    gp.getAllCssPath = function(glob) {
+        glob = glob || path.join('**', '*.{scss,sass}');
+        var rs = [];
+        for (var i = 0, l = this.cssSrcPaths.length; i < l; i++) {
+            rs.push(path.join(this.cssSrcPaths[i], glob));
+        }
+        return rs;
     };
 
     /**
