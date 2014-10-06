@@ -19,5 +19,8 @@ var gp = require('get-packages').init();
 * gp.getImagePaths()
 * gp.getFontPaths()
 
+## Utilities
+* gp.util.match(filepaths, patterns, options)
+
 ## Requirement
 * Yii Packages command
