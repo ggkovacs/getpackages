@@ -1,6 +1,6 @@
 {
   "name": "get-packages",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Yii Packages command Node.js wrapper",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/ggkovacs/getpackages",
   "dependencies": {
-    "execSync": "^1.0.1-pre",
+    "execSync": "^1.0.2",
     "minimatch": "^1.0.0",
     "lodash": "^2.4.1"
   },
