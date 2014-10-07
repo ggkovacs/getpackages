@@ -155,14 +155,19 @@
                     currentItem.cssfiles[0].sources = [currentItem.cssfiles[0].sources];
                 }
 
-                var sources = currentItem.cssfiles[0].sources[0];
-                if (currentItem.cssfiles[0].sources.length > 1) {
-                    sources = '{' + currentItem.cssfiles[0].sources.join(',') + '}';
-                }
+                if (currentItem.cssfiles[0].sources[0].indexOf(path.sep) === -1) {
+                    var sources = currentItem.cssfiles[0].sources[0];
+                    if (currentItem.cssfiles[0].sources.length > 1) {
+                        sources = '{' + currentItem.cssfiles[0].sources.join(',') + '}';
+                    }
 
-                currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
-                this.cssSrcPaths.push(currentItem.cssfiles[0].sources);
-                this.cssPaths.push(currentItem.cssfiles[0]);
+                    currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
+                    this.cssSrcPaths.push(currentItem.cssfiles[0].sources);
+                    this.cssPaths.push(currentItem.cssfiles[0]);
+                } else {
+                    this.cssSrcPaths.push(currentItem.cssfiles[0].sources[0]);
+                    this.cssPaths.push(currentItem.cssfiles[0]);
+                }
             }
 
             if (currentItem.jsfiles !== undefined) {
