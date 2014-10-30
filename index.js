@@ -223,20 +223,6 @@
     };
 
     /**
-     * Get all image paths
-     * @param  {String} glob
-     * @return {Array}
-     */
-    gp.getAllImagePath = function(glob) {
-        glob = glob || path.join('**', '*.{png,jpg,jpeg,gif}');
-        var rs = [];
-        for (var i = 0, l = this.imgPaths.length; i < l; i++) {
-            rs.push(path.join(this.imgPaths[i].sources, glob));
-        }
-        return rs;
-    };
-
-    /**
      * Get all js file
      * @return {Array}
      */
@@ -266,6 +252,20 @@
      */
     gp.getImagePaths = function() {
         return this.imgPaths;
+    };
+
+    /**
+     * Get all image paths
+     * @param  {String} glob
+     * @return {Array}
+     */
+    gp.getAllImagePaths = function(glob) {
+        glob = glob || path.join('**', '*.{png,jpg,jpeg,gif}');
+        var rs = [];
+        for (var i = 0, l = this.imgPaths.length; i < l; i++) {
+            rs.push(path.join(this.imgPaths[i].sources, glob));
+        }
+        return rs;
     };
 
     /**

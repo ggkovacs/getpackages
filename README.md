@@ -17,6 +17,7 @@ var gp = require('get-packages').init();
 * gp.getAllDistPaths()
 * gp.getBuildJs()
 * gp.getImagePaths()
+* gp.getAllImagePaths()
 * gp.getFontPaths()
 
 ## Utilities
