@@ -212,7 +212,7 @@
                 if (minimatch(filepath, path.join(this.cssPaths[i].sources, glob))) {
                     rs.push(this.cssPaths[i]);
                 }
-            };
+            }
             return rs;
         }
         return this.cssPaths;
