@@ -11,13 +11,13 @@ var gp = require('get-packages').init();
 * gp.init(config)
 * gp.build()
 * gp.get()
-* gp.getCssPaths()
-* gp.getAllCssPath()
+* gp.getCssPaths(filepath, glob)
+* gp.getAllCssPath(glob)
 * gp.getAllJsFile()
 * gp.getAllDistPaths()
 * gp.getBuildJs()
 * gp.getImagePaths()
-* gp.getAllImagePaths()
+* gp.getAllImagePaths(glob)
 * gp.getFontPaths()
 
 ## Utilities

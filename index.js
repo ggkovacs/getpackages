@@ -204,7 +204,17 @@
      * Get css paths
      * @return {Array}
      */
-    gp.getCssPaths = function() {
+    gp.getCssPaths = function(filepath, glob) {
+        glob = glob || path.join('**', '*.{scss,sass}');
+        if (filepath) {
+            var rs = [];
+            for (var i = 0, l = this.cssPaths.length; i < l; i++) {
+                if (minimatch(filepath, path.join(this.cssPaths[i].sources, glob))) {
+                    rs.push(this.cssPaths[i]);
+                }
+            };
+            return rs;
+        }
         return this.cssPaths;
     };
 
