@@ -18,8 +18,9 @@
   "homepage": "https://github.com/ggkovacs/getpackages",
   "dependencies": {
     "execSync": "^1.0.2",
-    "minimatch": "^1.0.0",
-    "lodash": "^2.4.1"
+    "extend": "^2.0.0",
+    "lodash": "^2.4.1",
+    "minimatch": "^1.0.0"
   },
   "engine": "node >= 0.10",
   "devDependencies": {
