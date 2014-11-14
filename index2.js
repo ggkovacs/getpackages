@@ -106,6 +106,15 @@ function getPackages(options) {
 }
 
 /**
+ * Deprecated log
+ * @param {String} deprecatedFunctionName
+ * @param {String} functionName
+ */
+function deprecatedLog(deprecatedFunctionName, functionName) {
+    console.log('This ' + functionName + 'is deprecated. Please use ' + functionName + '.');
+}
+
+/**
  * Build
  */
 getPackages.prototype.build = function() {
@@ -279,5 +288,112 @@ getPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
 getPackages.prototype.getFontsPaths = function() {
     return gp.fontsPaths;
 }
+
+// ****************************************
+// BACKWARD COMPATIBLE METHODS
+// ****************************************
+
+/**
+ * Get css paths
+ * @return {Array}
+ */
+getPackages.prototype.getCssPaths = function(filepath, glob) {
+    deprecatedLog('getCssPaths', 'getStylesPathsByFilepath');
+    return this.getStylesPathsByFilepath(filepath, glob);
+};
+
+/**
+ * Get all css paths
+ * @param  {String} glob
+ * @return {Array}
+ */
+getPackages.prototype.getAllCssPath = function(glob) {
+    deprecatedLog('getAllCssPath', 'getStylesSourcePathWithGlob');
+    return this.getStylesSourcePathWithGlob(glob);
+};
+
+/**
+ * Get all js file
+ * @return {Array}
+ */
+getPackages.prototype.getAllJsFile = function() {
+    deprecatedLog('getAllJsFile', 'getScriptsSourcePath');
+    return this.getScriptsSourcePath();
+};
+
+/**
+ * Get all dist path
+ * @return {Array}
+ */
+getPackages.prototype.getAllDistPath = function() {
+    deprecatedLog('getAllDistPath', 'getPackagesDistPath');
+    return this.getPackagesDistPath();
+};
+
+/**
+ * Get build js
+ * @return {Array}
+ */
+getPackages.prototype.getBuildJs = function() {
+    deprecatedLog('getBuildJs', 'getScriptsToBuild');
+    return this.getScriptsToBuild();
+};
+
+/**
+ * Get image paths
+ * @return {Array}
+ */
+getPackages.prototype.getImagePaths = function() {
+    deprecatedLog('getImagePaths', 'getImagesPaths');
+    return this.getImagesPaths();
+};
+
+/**
+ * Get all image paths
+ * @param  {String} glob
+ * @return {Array}
+ */
+ getPackages.prototype.getAllImagePaths = function(glob) {
+    deprecatedLog('getAllImagePaths', '');
+    return this.
+};
+
+/**
+ * Get font paths
+ * @return {Array}
+ */
+getPackages.prototype.getFontPaths = function() {
+    deprecatedLog('getFontPaths', 'getFontsPaths');
+    return this.getFontsPaths();
+};
+
+/**
+ * Match
+ * @param  {Array} filepaths
+ * @param  {Array} patterns
+ * @param  {Object} options
+ * @return {Array}
+ */
+getPackages.prototype.util.match = function(filepaths, patterns, options) {
+    if (typeof filepaths === 'undefined' || typeof patterns === 'undefined') {
+        return [];
+    }
+
+    if (!Array.isArray(filepaths)) {
+        filepaths = [filepaths];
+    }
+
+    if (!Array.isArray(patterns)) {
+        patterns = [patterns];
+    }
+
+    if (patterns.length === 0 || filepaths.length === 0) {
+        return [];
+    }
+
+    return processPatterns(patterns, function(pattern) {
+        return minimatch.match(filepaths, pattern, options);
+    });
+};
 
 module.exports = getPackages;
