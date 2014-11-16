@@ -17,6 +17,7 @@ var gp = require('get-packages').init();
 ### Options
 
 Type: `Object | Null`
+
 Default:
 ```js
 {
@@ -46,9 +47,12 @@ Default:
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)
 - gp.getFontsPaths()
+- gp.getExtrasByModule(module)
 
 
 ### Backward compatible methods
+
+This methods were deprecated and will be removed in 2.1.
 
 - gp.getCssPaths(filepath, glob)
 - gp.getAllCssPath(glob)
