@@ -47,7 +47,7 @@ Default:
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)
 - gp.getFontsPaths()
-- gp.getExtrasByModule(module)
+- gp.getExtraParamsByModule(module)
 
 
 ### Backward compatible methods

@@ -53,7 +53,7 @@ var data = {
 
     fontsPaths: [],
 
-    extras: {}
+    extraParams: {}
 };
 
 /**
@@ -154,6 +154,8 @@ getPackages.prototype.build = function() {
     for (var i = 0, l = data.packages.length; i < l; i++) {
         var currentItem = data.packages[i];
 
+        data.packagesDistPath.push(currentItem.dist);
+
         if (currentItem.cssfiles) {
             if (Array.isArray(currentItem.cssfiles[0].sources)) {
                 var sources = currentItem.cssfiles[0].sources[0];
@@ -200,8 +202,8 @@ getPackages.prototype.build = function() {
             });
         }
 
-        if (currentItem.extras) {
-            data.extras[currentItem.module] = currentItem.extras;
+        if (currentItem.extraParams) {
+            data.extraParams[currentItem.module] = currentItem.extraParams;
         }
     }
 };
@@ -215,12 +217,12 @@ getPackages.prototype.get = function() {
 };
 
 /**
- * Get extras by module
+ * Get extra params by module
  * @return {Object|Boolean}
  */
-getPackages.prototype.getExtrasByModule = function(module) {
-    if (data.extras[module]) {
-        return data.extras[module];
+getPackages.prototype.getExtraParamsByModule = function(module) {
+    if (data.extraParams[module]) {
+        return data.extraParams[module];
     }
     return false;
 };
