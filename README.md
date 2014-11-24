@@ -1,5 +1,5 @@
 # Get packages
-Version: **2.0.1**
+Version: **2.0.2**
 
 Yii Packages command Node.js wrapper
 
