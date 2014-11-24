@@ -35,26 +35,19 @@ Default:
 
 - gp.init(options)
 - gp.build()
-
 - gp.get()
-
 - gp.getPackagesDistPath()
 - gp.getPackagesDistPathWithoutImageDir()
-
 - gp.getStylesPaths()
 - gp.getStylesPathsByFilepath(filepath, glob)
 - gp.getStylesSourcePath()
 - gp.getStylesSourcePathWithGlob(glob)
-
 - gp.getScriptsSourcePath()
 - gp.getScriptsToBuild()
-
 - gp.getImagesPaths()
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)
-
 - gp.getFontsPaths()
-
 - gp.getExtraParamsByModule(module)
 
 
