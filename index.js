@@ -41,6 +41,7 @@ var data = {
     packages: {},
 
     packagesDistPath: [],
+    packagesDistPathWithoutImageDir: [],
 
     stylesPaths: [],
     stylesSourcePath: [],
@@ -155,6 +156,8 @@ getPackages.prototype.build = function() {
         var currentItem = data.packages[i];
 
         data.packagesDistPath.push(currentItem.dist);
+        data.packagesDistPathWithoutImageDir.push(path.join(currentItem.dist, '*'));
+        data.packagesDistPathWithoutImageDir.push(path.join('!', currentItem.dist, currentItem.imgPath));
 
         if (currentItem.cssfiles) {
             if (Array.isArray(currentItem.cssfiles[0].sources)) {
@@ -233,6 +236,14 @@ getPackages.prototype.getExtraParamsByModule = function(module) {
  */
 getPackages.prototype.getPackagesDistPath = function() {
     return data.packagesDistPath;
+};
+
+/**
+ * Get packages dist path without image directory
+ * @return {Array}
+ */
+getPackages.prototype.getPackagesDistPathWithoutImageDir = function() {
+    return data.packagesDistPathWithoutImageDir;
 };
 
 /**
