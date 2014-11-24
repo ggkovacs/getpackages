@@ -156,8 +156,11 @@ getPackages.prototype.build = function() {
         var currentItem = data.packages[i];
 
         data.packagesDistPath.push(currentItem.dist);
-        data.packagesDistPathWithoutImageDir.push(path.join(currentItem.dist, '*'));
-        data.packagesDistPathWithoutImageDir.push(path.join('!', currentItem.dist, currentItem.imgPath));
+
+        if (currentItem.imgPath) {
+            data.packagesDistPathWithoutImageDir.push(path.join(currentItem.dist, '*'));
+            data.packagesDistPathWithoutImageDir.push(path.join('!', currentItem.dist, currentItem.imgPath));
+        }
 
         if (currentItem.cssfiles) {
             if (Array.isArray(currentItem.cssfiles[0].sources)) {
