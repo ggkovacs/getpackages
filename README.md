@@ -1,5 +1,5 @@
 # Get packages
-Version: **2.0.0**
+Version: **2.0.1**
 
 Yii Packages command Node.js wrapper
 
@@ -35,18 +35,26 @@ Default:
 
 - gp.init(options)
 - gp.build()
+
 - gp.get()
+
 - gp.getPackagesDistPath()
+- gp.getPackagesDistPathWithoutImageDir()
+
 - gp.getStylesPaths()
 - gp.getStylesPathsByFilepath(filepath, glob)
 - gp.getStylesSourcePath()
 - gp.getStylesSourcePathWithGlob(glob)
+
 - gp.getScriptsSourcePath()
 - gp.getScriptsToBuild()
+
 - gp.getImagesPaths()
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)
+
 - gp.getFontsPaths()
+
 - gp.getExtraParamsByModule(module)
 
 
