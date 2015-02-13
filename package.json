@@ -20,13 +20,13 @@
     "chalk": "^0.5.1",
     "execSync": "^1.0.2",
     "extend": "^2.0.0",
-    "lodash": "^2.4.1",
-    "minimatch": "^1.0.0"
+    "lodash": "^3.2.0",
+    "minimatch": "^2.0.1"
   },
   "engine": "node >= 0.10",
   "devDependencies": {
-    "gulp": "^3.8.9",
-    "gulp-jscs": "^1.2.1",
-    "gulp-jshint": "^1.8.6"
+    "gulp": "^3.8.11",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.9.2"
   }
 }
