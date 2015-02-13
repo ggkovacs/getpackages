@@ -209,7 +209,11 @@ getPackages.prototype.build = function() {
         }
 
         if (currentItem.extraParams) {
-            data.extraParams[currentItem.module] = currentItem.extraParams;
+            if (currentItem.package) {
+                data.extraParams[currentItem.package] = currentItem.extraParams;
+            } else {
+                data.extraParams[currentItem.module] = currentItem.extraParams;
+            }
         }
     }
 };
