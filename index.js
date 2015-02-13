@@ -154,6 +154,7 @@ getPackages.prototype.init = function(options) {
 getPackages.prototype.build = function() {
     for (var i = 0, l = data.packages.length; i < l; i++) {
         var currentItem = data.packages[i];
+        var packageName = currentItem.package || null;
 
         data.packagesDistPath.push(currentItem.dist);
 
@@ -172,6 +173,7 @@ getPackages.prototype.build = function() {
             }
 
             currentItem.cssfiles[0].module = currentItem.module;
+            currentItem.cssfiles[0].package = packageName;
 
             data.stylesSourcePath.push(currentItem.cssfiles[0].sources);
             data.stylesPaths.push(currentItem.cssfiles[0]);
@@ -184,6 +186,7 @@ getPackages.prototype.build = function() {
 
             data.scriptsToBuild.push({
                 'module': currentItem.module,
+                'package': packageName,
                 'sources': currentItem.jsfiles[0].sources,
                 'dest': currentItem.jsfiles[0].dist.replace(concatFilename, ''),
                 'concatFilename': concatFilename
@@ -193,6 +196,7 @@ getPackages.prototype.build = function() {
         if (currentItem.imgPath) {
             data.imagesPaths.push({
                 'module': currentItem.module,
+                'package': packageName,
                 'sources': path.join(currentItem.sources, currentItem.imgPath),
                 'dest': path.join(currentItem.dist, currentItem.imgPath)
             });
@@ -203,6 +207,7 @@ getPackages.prototype.build = function() {
         if (currentItem.fontPath) {
             data.fontsPaths.push({
                 'module': currentItem.module,
+                'package': packageName,
                 'sources': path.join(currentItem.sources, currentItem.fontPath),
                 'dest': path.join(currentItem.dist, currentItem.fontPath)
             });
