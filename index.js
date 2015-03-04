@@ -201,7 +201,7 @@ getPackages.prototype.build = function() {
                 'dest': path.join(currentItem.dist, currentItem.imgPath)
             });
 
-            data.imagesSourcePath.push(currentItem.sources, currentItem.imgPath);
+            data.imagesSourcePath.push(path.join(currentItem.sources, currentItem.imgPath));
         }
 
         if (currentItem.fontPath) {
@@ -349,7 +349,7 @@ getPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
     glob = glob || path.join('**', '*.{png,jpg,jpeg,gif}');
     var rs = [];
     for (var i = 0, l = data.imagesSourcePath.length; i < l; i++) {
-        rs.push(path.join(this.imagesSourcePath[i], glob));
+        rs.push(path.join(data.imagesSourcePath[i], glob));
     }
     return rs;
 };
