@@ -24,9 +24,11 @@
   },
   "engine": "node >= 0.12",
   "devDependencies": {
+    "chai": "^2.1.2",
     "gulp": "^3.8.11",
     "gulp-jscs": "^1.4.0",
     "gulp-jshint": "^1.9.2",
+    "gulp-mocha": "^2.0.0",
     "pre-commit": "^1.0.6"
   },
   "pre-commit": [

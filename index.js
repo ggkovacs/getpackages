@@ -38,7 +38,7 @@ var defaults = {
     testMode: false,
 
     /**
-     * Test json path
+     * Test json
      * @type {String}
      */
     testJson: null
@@ -137,7 +137,7 @@ getPackages.prototype.init = function(options) {
     var packages = {};
     if (defaults.testMode) {
         packages.code = 0;
-        packages.stdout = require(defaults.testJson);
+        packages.stdout = JSON.stringify(require(defaults.testJson));
     } else {
         var command = path.join(getDirname(), defaults.applicationPath, defaults.yiiPackagesCommand);
         packages = execSync(command);
@@ -180,8 +180,9 @@ getPackages.prototype.build = function() {
                 currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
             }
 
-            currentItem.cssfiles[0].module = currentItem.module;
-            currentItem.cssfiles[0].package = packageName;
+            var stylesPaths = extend(true, {}, currentItem.cssfiles[0]);
+            stylesPaths.module = currentItem.module;
+            stylesPaths.package = packageName;
 
             data.stylesSourcePath.push(currentItem.cssfiles[0].sources);
             data.stylesPaths.push(currentItem.cssfiles[0]);
@@ -369,6 +370,12 @@ getPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
 getPackages.prototype.getFontsPaths = function() {
     return data.fontsPaths;
 };
+
+/**
+ * Utilities object
+ * @type {Object}
+ */
+getPackages.prototype.util = {};
 
 /**
  * Match

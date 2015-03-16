@@ -1,7 +1,7 @@
 # Get packages
 Version: **3.0.0**
 
-Node.js requirement: **0.12.0**
+Node.js requirement: **>= 0.12**
 
 Yii 1/2 Packages command Node.js wrapper
 
