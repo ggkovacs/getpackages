@@ -1,7 +1,9 @@
 # Get packages
-Version: **2.0.5**
+Version: **3.0.0**
 
-Yii Packages command Node.js wrapper
+Node.js requirement: **0.12.0**
+
+Yii 1/2 Packages command Node.js wrapper
 
 ## Installation
 
@@ -24,12 +26,16 @@ Default:
     applicationPath: 'protected',
     yiiPackagesCommand: 'yiic packages',
     verbose: false,
+    testMode: false,
+    testJson: null
 }
 ```
 
 - `applicationPath` (String)
 - `yiiPackagesCommand` (String)
 - `verbose` (Boolean)
+- `testMode` (Boolean)
+- `testJson` (String)
 
 ### Methods
 
@@ -50,25 +56,11 @@ Default:
 - gp.getFontsPaths()
 - gp.getExtraParamsByModule(module)
 
-
-### Backward compatible methods
-
-This methods were deprecated and will be removed in 2.1.
-
-- gp.getCssPaths(filepath, glob)
-- gp.getAllCssPath(glob)
-- gp.getAllJsFile()
-- gp.getAllDistPaths()
-- gp.getBuildJs()
-- gp.getImagePaths()
-- gp.getAllImagePaths(glob)
-- gp.getFontPaths()
-
 #### Utilities
 * gp.util.match(filepaths, patterns, options)
 
 ## Requirement
-* Yii Packages command
+* Yii 1/2 Packages command
 
 # License
-MIT (c) 2014 Gergely Kovács (gg.kovacs@gmail.com)
+MIT (c) 2015 Gergely Kovács (gg.kovacs@gmail.com)

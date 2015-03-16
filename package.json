@@ -1,10 +1,11 @@
 {
   "name": "get-packages",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "Yii Packages command Node.js wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "prepublish": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -17,16 +18,18 @@
   },
   "homepage": "https://github.com/ggkovacs/getpackages",
   "dependencies": {
-    "chalk": "^1.0.0",
-    "execSync": "^1.0.2",
     "extend": "^2.0.0",
-    "lodash": "^3.3.1",
-    "minimatch": "^2.0.1"
+    "lodash": "^3.5.0",
+    "minimatch": "^2.0.4"
   },
-  "engine": "node >= 0.10",
+  "engine": "node >= 0.12",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-jscs": "^1.4.0",
-    "gulp-jshint": "^1.9.2"
-  }
+    "gulp-jshint": "^1.9.2",
+    "pre-commit": "^1.0.6"
+  },
+  "pre-commit": [
+    "test"
+  ]
 }

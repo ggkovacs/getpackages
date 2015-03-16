@@ -1,0 +1,265 @@
+{
+   "packages" : [
+      {
+         "fontPath" : "fonts",
+         "imgPath" : "img",
+         "jsfiles" : [
+            {
+               "sources" : [
+                  "/sample/protected/assets/main/src/js/plugins.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.rnd.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.lotto.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.lotto_combination.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.luxor.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.keno.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.putto.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.toto.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.toto_combination.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.goaltoto.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.eurojackpot.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.joker.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.favorite.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.get_city.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.dialog.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.withdrawal.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.try_lottery.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.competition.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.transaction_log.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.batchbet.js",
+                  "/sample/protected/assets/main/src/js/plugins/szrt.checkSession.js",
+                  "/sample/protected/assets/main/src/js/main.js"
+               ],
+               "dist" : "/sample/protected/assets/main/dist/js/combined.js"
+            }
+         ],
+         "dist" : "/sample/protected/assets/main/dist",
+         "cssfiles" : [
+            {
+               "sources" : "/sample/protected/assets/main/src/scss",
+               "dev" : "/sample/protected/assets/main/src/css",
+               "dist" : "/sample/protected/assets/main/dist/css"
+            }
+         ],
+         "sources" : "/sample/protected/assets/main/src",
+         "module" : "app.frontend",
+         "scssPath" : "scss"
+      },
+      {
+         "fontPath" : "fonts",
+         "imgPath" : "img",
+         "jsfiles" : [
+            {
+               "sources" : [
+                  "/sample/protected/assets/posportal/src/js/main.js"
+               ],
+               "dist" : "/sample/protected/assets/posportal/dist/js/combined.js"
+            }
+         ],
+         "dist" : "/sample/protected/assets/posportal/dist",
+         "cssfiles" : [
+            {
+               "sources" : "/sample/protected/assets/posportal/src/scss",
+               "dev" : "/sample/protected/assets/posportal/src/css",
+               "dist" : "/sample/protected/assets/posportal/dist/css"
+            }
+         ],
+         "sources" : "/sample/protected/assets/posportal/src",
+         "module" : "app.posportal",
+         "scssPath" : "scss"
+      },
+      {
+         "fontPath" : "fonts",
+         "imgPath" : "img",
+         "extraParams" : {
+            "ngAnnotate" : true
+         },
+         "jsfiles" : [
+            {
+               "sources" : [
+                  "/sample/protected/assets/tippmixplus/src/vendor/angular-sanitize/angular-sanitize.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/angular-i18n/angular-locale_hu-hu.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/jquery-mousewheel/jquery.mousewheel.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/jqueryui-timedatepicker-i18n/jquery.ui.datepicker-hu.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/jquery.numeric/jquery.numeric.js",
+                  "/sample/protected/assets/tippmixplus/src/vendor/transaction-log/transaction-log.js",
+                  "/sample/protected/assets/tippmixplus/src/js/app.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/ajaxWrapper.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/encrypter.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/modal.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/checkable.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/select.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/anchor.js",
+                  "/sample/protected/assets/tippmixplus/src/js/components/getCity.js",
+                  "/sample/protected/assets/tippmixplus/src/js/filters/remainingTime.js",
+                  "/sample/protected/assets/tippmixplus/src/js/filters/orderBetslipCombination.js",
+                  "/sample/protected/assets/tippmixplus/src/js/filters/tmCurrency.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/httpService.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/betslip/betslipCombination.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/betslip/betslipCalculator.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/betslip/betslipStorage.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/betslip/betslipService.js",
+                  "/sample/protected/assets/tippmixplus/src/js/services/betslip/betslipRounding.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/outcomes.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/fixedOdds.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/remainingTime.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/numbersOnly.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/scoreboardRows.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/betradarLink.js",
+                  "/sample/protected/assets/tippmixplus/src/js/directives/eventPageLink.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/CalendarWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/CalendarEventsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/BestCombinationWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/SportsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/PromotedHomepageEventsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/NewsletterWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LoggedInWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/BestGamesWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/SearchResultsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/QuickSearchWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/EventPageWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/DictionaryWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LastMinuteWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/FaqWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/MatchOfTheDayWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/RegistrationWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/CustomerDataWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/ChangePasswordWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/SportsContainerWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/BetslipWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/BetslipConfirmWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/HistoryWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LiveResultsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LiveGamesWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LiveScoreboardWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/FinanceWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/HighlightedEventContainerWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/LiveEventPageWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/widgets/EventResultsWidget.js",
+                  "/sample/protected/assets/tippmixplus/src/js/modals/LoginModal.js"
+               ],
+               "dist" : "/sample/protected/assets/tippmixplus/dist/js/combined.js"
+            }
+         ],
+         "dist" : "/sample/protected/assets/tippmixplus/dist",
+         "cssfiles" : [
+            {
+               "sources" : "/sample/protected/assets/tippmixplus/src/scss",
+               "dev" : "/sample/protected/assets/tippmixplus/src/css",
+               "dist" : "/sample/protected/assets/tippmixplus/dist/css"
+            }
+         ],
+         "sources" : "/sample/protected/assets/tippmixplus/src",
+         "module" : "app.tippmixplus",
+         "scssPath" : "scss"
+      },
+      {
+         "sources" : "/sample/protected/assets/bet-common/src",
+         "extraParams" : {
+            "ngAnnotate" : true
+         },
+         "jsfiles" : [
+            {
+               "sources" : [
+                  "/sample/protected/assets/bet-common/src/vendors/angular-route.js",
+                  "/sample/protected/assets/bet-common/src/vendors/angular-locale_hu-hu.js",
+                  "/sample/protected/assets/bet-common/src/vendors/ui.sortable.js",
+                  "/sample/protected/assets/bet-common/src/js/betCommon.js",
+                  "/sample/protected/assets/bet-common/src/js/filters/textCurrency.js",
+                  "/sample/protected/assets/bet-common/src/js/filters/goalTotoTip.js",
+                  "/sample/protected/assets/bet-common/src/js/services/rndService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/httpService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/jokerService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/lottoService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/lottoCombinationService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/eurojackpotService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/goalTotoService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/kenoService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/kenoCombinationService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/luxorService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/puttoService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/totoService.js",
+                  "/sample/protected/assets/bet-common/src/js/services/totoCombinationService.js"
+               ],
+               "dist" : "/sample/protected/assets/bet-common/dist/js/combined.js"
+            }
+         ],
+         "dist" : "/sample/protected/assets/bet-common/dist",
+         "module" : "app.bet-common"
+      },
+      {
+         "fontPath" : "fonts",
+         "imgPath" : "img",
+         "extraParams" : {
+            "px2rem" : true,
+            "ngAnnotate" : true
+         },
+         "jsfiles" : [
+            {
+               "sources" : [
+                  "/sample/protected/assets/bet-mobile/src/vendors/jquery.ui.touch-punch.js",
+                  "/sample/protected/assets/bet-mobile/src/js/betMobile.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/numberPlaceholder.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/formatNumber.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/multiplierSymbol.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/dotsSymbol.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/totoPrognosis.js",
+                  "/sample/protected/assets/bet-mobile/src/js/filters/totoCombinationPrognosis.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/loginModal.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/toggleModal.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/quickTipCombination.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/totoTip.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/jumpToModal.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/toggleGamesDetails.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/tabsContainer.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/transactionLogEntry.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/toggly.js",
+                  "/sample/protected/assets/bet-mobile/src/js/directives/menuLink.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/lottoWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/lottoCombinationWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/eurojackpotWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/goalTotoWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/kenoWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/kenoCombinationWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/luxorWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/puttoWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/totoWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/totoCombinationWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/shoppingBasketConfirmWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/registrationFormWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/favoriteWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/drawInformationWidget.js",
+                  "/sample/protected/assets/bet-mobile/src/js/widgets/batchBetWidget.js"
+               ],
+               "dist" : "/sample/protected/assets/bet-mobile/dist/js/combined.js"
+            }
+         ],
+         "dist" : "/sample/protected/assets/bet-mobile/dist",
+         "cssfiles" : [
+            {
+               "sources" : "/sample/protected/assets/bet-mobile/src/scss",
+               "dev" : "/sample/protected/assets/bet-mobile/src/css",
+               "dist" : "/sample/protected/assets/bet-mobile/dist/css"
+            }
+         ],
+         "sources" : "/sample/protected/assets/bet-mobile/src",
+         "module" : "app.bet-mobile",
+         "scssPath" : "scss"
+      },
+      {
+         "fontPath" : "fonts",
+         "cssfiles" : [
+            {
+               "sources" : "/sample/protected/extensions/mito_cms/modules/admin/assets/admin/src/scss",
+               "dev" : "/sample/protected/extensions/mito_cms/modules/admin/assets/admin/src/css",
+               "dist" : "/sample/protected/extensions/mito_cms/modules/admin/assets/admin/dist/css"
+            }
+         ],
+         "imgPath" : "img",
+         "sources" : "/sample/protected/extensions/mito_cms/modules/admin/assets/admin/src",
+         "dist" : "/sample/protected/extensions/mito_cms/modules/admin/assets/admin/dist",
+         "scssPath" : "scss",
+         "module" : "admin.admin"
+      }
+   ]
+}

@@ -4,16 +4,17 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 
-var src = 'index.js';
-
 gulp.task('jshint', function() {
-    return gulp.src(src)
+    return gulp.src('index.js')
         .pipe(jshint('.jshintrc'))
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('default'), {
+            verbose: true
+        })
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('jscs', function() {
-    return gulp.src(src)
+    return gulp.src('index.js')
         .pipe(jscs('.jscsrc'));
 });
 
