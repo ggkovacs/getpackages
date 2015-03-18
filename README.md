@@ -1,4 +1,4 @@
-# Get packages
+# Get packages [![Build Status](https://travis-ci.org/ggkovacs/getpackages.svg?branch=master)](https://travis-ci.org/ggkovacs/getpackages)
 Version: **3.0.0**
 
 Node.js requirement: **>= 0.12**
