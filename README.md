@@ -1,4 +1,4 @@
-# Get packages
+# Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 Version: **3.0.0**
 
 Node.js requirement: **>= 0.12**
@@ -70,4 +70,11 @@ Default:
 * Yii 1/2 Packages command
 
 # License
-MIT (c) 2015 Gergely Kovács (gg.kovacs@gmail.com)
+MIT © 2015 Gergely Kovács (gg.kovacs@gmail.com)
+
+[npm-image]: https://badge.fury.io/js/get-packages.svg
+[npm-url]: https://npmjs.org/package/get-packages
+[travis-image]: https://travis-ci.org/ggkovacs/getpackages.svg?branch=master
+[travis-url]: https://travis-ci.org/ggkovacs/getpackages
+[daviddm-image]: https://david-dm.org/ggkovacs/getpackages.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/ggkovacs/getpackages
