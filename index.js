@@ -8,6 +8,7 @@ var minimatch = require('minimatch');
 var _ = require('lodash');
 var path = require('path');
 var extend = require('extend');
+var chalk = require('chalk');
 
 /**
  * Defaults
@@ -26,22 +27,10 @@ var defaults = {
     yiiPackagesCommand: 'yiic packages',
 
     /**
-     * Verbose mode
+     * Is absolute command path
      * @type {Boolean}
      */
-    verbose: false,
-
-    /**
-     * Test mode
-     * @type {Boolean}
-     */
-    testMode: false,
-
-    /**
-     * Test json
-     * @type {String}
-     */
-    testJson: null
+    isAbsoluteCommandPath: true
 };
 
 /**
@@ -118,6 +107,15 @@ function processPatterns(patterns, fn) {
 }
 
 /**
+ * Deprecated log
+ * @param {String} deprecatedFunctionName
+ * @param {String} functionName
+ */
+function deprecatedLog(deprecatedFunctionName, functionName) {
+    console.log(chalk.red('This ' + deprecatedFunctionName + ' method was deprecated. ') + chalk.green('Use ' + functionName + ' instead.'));
+}
+
+/**
  * Get packages
  */
 var getPackages = function() {};
@@ -134,23 +132,22 @@ getPackages.prototype.init = function(options) {
         defaults = extend(true, {}, defaults, options);
     }
 
-    var packages = {};
-    if (defaults.testMode) {
-        packages.code = 0;
-        packages.stdout = JSON.stringify(require(defaults.testJson));
-    } else {
-        var command = path.join(getDirname(), defaults.applicationPath, defaults.yiiPackagesCommand);
-        packages = execSync(command);
-    }
-
-    if (packages.code > 0) {
-        if (defaults.verbose) {
-            console.log('Error code: ' + packages.code);
-            console.log('yiic packages error: \n' + packages.stdout);
+    try {
+        var command = '';
+        if (defaults.isAbsoluteCommandPath) {
+            command = getDirname();
         }
-    } else {
-        data.packages = JSON.parse(packages.stdout).packages;
+        command = path.join(command, defaults.applicationPath, defaults.yiiPackagesCommand);
+
+        var packages = execSync(command, {
+            encoding: 'utf8'
+        });
+
+        data.packages = JSON.parse(packages).packages;
+
         this.build();
+    } catch (e) {
+        process.exit(1);
     }
 
     return this;
@@ -371,11 +368,89 @@ getPackages.prototype.getFontsPaths = function() {
     return data.fontsPaths;
 };
 
+// ****************************************
+// BACKWARD COMPATIBLE METHODS
+// ****************************************
+
 /**
  * Utilities object
  * @type {Object}
  */
 getPackages.prototype.util = {};
+
+/**
+ * Get css paths
+ * @return {Array}
+ */
+getPackages.prototype.getCssPaths = function(filepath, glob) {
+    deprecatedLog('getCssPaths', 'getStylesPathsByFilepath');
+    return this.getStylesPathsByFilepath(filepath, glob);
+};
+
+/**
+ * Get all css paths
+ * @param  {String} glob
+ * @return {Array}
+ */
+getPackages.prototype.getAllCssPath = function(glob) {
+    deprecatedLog('getAllCssPath', 'getStylesSourcePathWithGlob');
+    return this.getStylesSourcePathWithGlob(glob);
+};
+
+/**
+ * Get all js file
+ * @return {Array}
+ */
+getPackages.prototype.getAllJsFile = function() {
+    deprecatedLog('getAllJsFile', 'getScriptsSourcePath');
+    return this.getScriptsSourcePath();
+};
+
+/**
+ * Get all dist path
+ * @return {Array}
+ */
+getPackages.prototype.getAllDistPath = function() {
+    deprecatedLog('getAllDistPath', 'getPackagesDistPath');
+    return this.getPackagesDistPath();
+};
+
+/**
+ * Get build js
+ * @return {Array}
+ */
+getPackages.prototype.getBuildJs = function() {
+    deprecatedLog('getBuildJs', 'getScriptsToBuild');
+    return this.getScriptsToBuild();
+};
+
+/**
+ * Get image paths
+ * @return {Array}
+ */
+getPackages.prototype.getImagePaths = function() {
+    deprecatedLog('getImagePaths', 'getImagesPaths');
+    return this.getImagesPaths();
+};
+
+/**
+ * Get all image paths
+ * @param  {String} glob
+ * @return {Array}
+ */
+getPackages.prototype.getAllImagePaths = function(glob) {
+    deprecatedLog('getAllImagePaths', 'getImagesSourcePathWithGlob');
+    return this.getImagesSourcePathWithGlob(glob);
+};
+
+/**
+ * Get font paths
+ * @return {Array}
+ */
+getPackages.prototype.getFontPaths = function() {
+    deprecatedLog('getFontPaths', 'getFontsPaths');
+    return this.getFontsPaths();
+};
 
 /**
  * Match

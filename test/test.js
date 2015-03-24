@@ -4,8 +4,9 @@
 var should = require('chai').should(); // jshint ignore:line
 var path = require('path');
 var gp = require('../index.js').init({
-    testMode: true,
-    testJson: path.join(__dirname, 'data', 'packages.json')
+    applicationPath: '',
+    yiiPackagesCommand: 'cat ' + path.join(__dirname, 'data', 'packages.json'),
+    isAbsoluteCommandPath: false
 });
 var validDatas = require(path.join(__dirname, 'data', 'validDatas.json'));
 

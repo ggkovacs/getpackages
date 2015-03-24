@@ -25,17 +25,13 @@ Default:
 {
     applicationPath: 'protected',
     yiiPackagesCommand: 'yiic packages',
-    verbose: false,
-    testMode: false,
-    testJson: null
+    isAbsoluteCommandPath: true,
 }
 ```
 
 - `applicationPath` (String)
 - `yiiPackagesCommand` (String)
-- `verbose` (Boolean)
-- `testMode` (Boolean)
-- `testJson` (String)
+- `isAbsoluteCommandPath` (Boolean)
 
 ### Methods
 
@@ -55,6 +51,17 @@ Default:
 - gp.getImagesSourcePathWithGlob(glob)
 - gp.getFontsPaths()
 - gp.getExtraParamsByModule(module)
+
+### Backward compatible methods
+
+- gp.getCssPaths(filepath, glob)
+- gp.getAllCssPath(glob)
+- gp.getAllJsFile()
+- gp.getAllDistPaths()
+- gp.getBuildJs()
+- gp.getImagePaths()
+- gp.getAllImagePaths(glob)
+- gp.getFontPaths()
 
 #### Utilities
 * gp.util.match(filepaths, patterns, options)
