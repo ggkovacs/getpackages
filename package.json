@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "gulp test",
-    "prepublish": "gulp test"
+    "prepublish": "gulp test",
+    "postinstall": "postinstall.js"
   },
   "repository": {
     "type": "git",

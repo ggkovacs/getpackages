@@ -1,8 +1,6 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 Version: **3.0.0**
 
-Node.js requirement: **>= 0.12**
-
 Yii 1/2 Packages command Node.js wrapper
 
 ## Installation
@@ -26,12 +24,14 @@ Default:
     applicationPath: 'protected',
     yiiPackagesCommand: 'yiic packages',
     isAbsoluteCommandPath: true,
+    verbose: false
 }
 ```
 
 - `applicationPath` (String)
 - `yiiPackagesCommand` (String)
 - `isAbsoluteCommandPath` (Boolean)
+- `verbose` (Boolean)
 
 ### Methods
 

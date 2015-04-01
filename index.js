@@ -30,7 +30,13 @@ var defaults = {
      * Is absolute command path
      * @type {Boolean}
      */
-    isAbsoluteCommandPath: true
+    isAbsoluteCommandPath: true,
+
+    /**
+     * Verbose mode
+     * @type {Boolean}
+     */
+    verbose: false
 };
 
 /**
@@ -132,22 +138,38 @@ getPackages.prototype.init = function(options) {
         defaults = extend(true, {}, defaults, options);
     }
 
-    try {
-        var command = '';
-        if (defaults.isAbsoluteCommandPath) {
-            command = getDirname();
+    var command = '';
+    if (defaults.isAbsoluteCommandPath) {
+        command = getDirname();
+    }
+    command = path.join(command, defaults.applicationPath, defaults.yiiPackagesCommand);
+
+    var packages;
+
+    if (execSync) {
+        try {
+            packages = execSync(command, {
+                encoding: 'utf8'
+            });
+
+            data.packages = JSON.parse(packages).packages;
+
+            this.build();
+        } catch (e) {
+            process.exit(1);
         }
-        command = path.join(command, defaults.applicationPath, defaults.yiiPackagesCommand);
+    } else {
+        packages = require('execSync').exec(command);
 
-        var packages = execSync(command, {
-            encoding: 'utf8'
-        });
-
-        data.packages = JSON.parse(packages).packages;
-
-        this.build();
-    } catch (e) {
-        process.exit(1);
+        if (packages.code > 0) {
+            if (defaults.verbose) {
+                console.log('Error code: ' + packages.code);
+                console.log('Error message: \n' + packages.stdout);
+            }
+        } else {
+            data.packages = JSON.parse(packages.stdout).packages;
+            this.build();
+        }
     }
 
     return this;
