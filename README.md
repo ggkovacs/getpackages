@@ -16,7 +16,7 @@ var gp = require('get-packages').init();
 
 ### Options
 
-Type: `Object | Null`
+Type: `String | Object | Null`
 
 Default:
 ```js
