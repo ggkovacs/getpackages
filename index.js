@@ -204,7 +204,7 @@ getPackages.prototype.build = function() {
             stylesPaths.package = packageName;
 
             data.stylesSourcePath.push(currentItem.cssfiles[0].sources);
-            data.stylesPaths.push(currentItem.cssfiles[0]);
+            data.stylesPaths.push(stylesPaths);
         }
 
         if (currentItem.jsfiles) {
