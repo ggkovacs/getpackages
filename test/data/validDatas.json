@@ -66,38 +66,50 @@
     {
       "sources": "/sample/protected/assets/desktop/src/scss",
       "dev": "/sample/protected/assets/desktop/src/css",
-      "dist": "/sample/protected/assets/desktop/dist/css"
+      "dist": "/sample/protected/assets/desktop/dist/css",
+      "module": "app.desktop",
+      "package": null
     },
     {
       "sources": "/sample/protected/assets/mobile/src/scss",
       "dev": "/sample/protected/assets/mobile/src/css",
-      "dist": "/sample/protected/assets/mobile/dist/css"
+      "dist": "/sample/protected/assets/mobile/dist/css",
+      "module": "app.mobile",
+      "package": null
     }
   ],
   "getStylesPathsByFilepath": [
     {
       "sources": "/sample/protected/assets/desktop/src/scss",
       "dev": "/sample/protected/assets/desktop/src/css",
-      "dist": "/sample/protected/assets/desktop/dist/css"
+      "dist": "/sample/protected/assets/desktop/dist/css",
+      "module": "app.desktop",
+      "package": null
     },
     {
       "sources": "/sample/protected/assets/mobile/src/scss",
       "dev": "/sample/protected/assets/mobile/src/css",
-      "dist": "/sample/protected/assets/mobile/dist/css"
+      "dist": "/sample/protected/assets/mobile/dist/css",
+      "module": "app.mobile",
+      "package": null
     }
   ],
   "getStylesPathsByFilepathWithFilePath": [
     {
       "sources": "/sample/protected/assets/desktop/src/scss",
       "dev": "/sample/protected/assets/desktop/src/css",
-      "dist": "/sample/protected/assets/desktop/dist/css"
+      "dist": "/sample/protected/assets/desktop/dist/css",
+      "module": "app.desktop",
+      "package": null
     }
   ],
   "getStylesPathsByFilepathWithFilePathAndGlob": [
     {
       "sources": "/sample/protected/assets/mobile/src/scss",
       "dev": "/sample/protected/assets/mobile/src/css",
-      "dist": "/sample/protected/assets/mobile/dist/css"
+      "dist": "/sample/protected/assets/mobile/dist/css",
+      "module": "app.mobile",
+      "package": null
     }
   ],
   "getStylesSourcePath": [
