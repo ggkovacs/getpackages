@@ -36,7 +36,7 @@ var defaults = {
      * Verbose mode
      * @type {Boolean}
      */
-    verbose: false
+    verbose: false,
 };
 
 /**
@@ -60,7 +60,7 @@ var data = {
 
     fontsPaths: [],
 
-    extraParams: {}
+    extraParams: {},
 };
 
 /**
@@ -101,6 +101,7 @@ function processPatterns(patterns, fn) {
         if (exclusion) {
             pattern = pattern.slice(1);
         }
+
         var matches = fn(pattern);
         if (exclusion) {
             result = _.difference(result, matches);
@@ -124,14 +125,14 @@ function deprecatedLog(deprecatedFunctionName, functionName) {
 /**
  * Get packages
  */
-var getPackages = function() {};
+var GetPackages = function() {};
 
 /**
  * Init
  * @param  {Object|String} options
  * @return {Object}
  */
-getPackages.prototype.init = function(options) {
+GetPackages.prototype.init = function(options) {
     if (typeof options === 'string') {
         defaults.applicationPath = options;
     } else if (typeof options === 'object') {
@@ -142,6 +143,7 @@ getPackages.prototype.init = function(options) {
     if (defaults.isAbsoluteCommandPath) {
         command = getDirname();
     }
+
     command = path.join(command, defaults.applicationPath, defaults.yiiPackagesCommand);
 
     var packages;
@@ -149,7 +151,7 @@ getPackages.prototype.init = function(options) {
     if (execSync) {
         try {
             packages = execSync(command, {
-                encoding: 'utf8'
+                encoding: 'utf8',
             });
 
             data.packages = JSON.parse(packages).packages;
@@ -159,7 +161,7 @@ getPackages.prototype.init = function(options) {
             process.exit(1);
         }
     } else {
-        packages = require('execSync').exec(command);
+        packages = require('sync-exec')(command);
 
         if (packages.code > 0) {
             if (defaults.verbose) {
@@ -178,7 +180,7 @@ getPackages.prototype.init = function(options) {
 /**
  * Build
  */
-getPackages.prototype.build = function() {
+GetPackages.prototype.build = function() {
     for (var i = 0, l = data.packages.length; i < l; i++) {
         var currentItem = data.packages[i];
         var packageName = currentItem.package || null;
@@ -196,6 +198,7 @@ getPackages.prototype.build = function() {
                 if (currentItem.cssfiles[0].sources.length > 1) {
                     sources = '{' + currentItem.cssfiles[0].sources.join(',') + '}';
                 }
+
                 currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
             }
 
@@ -213,20 +216,20 @@ getPackages.prototype.build = function() {
             var concatFilename = path.basename(currentItem.jsfiles[0].dist);
 
             data.scriptsToBuild.push({
-                'module': currentItem.module,
-                'package': packageName,
-                'sources': currentItem.jsfiles[0].sources,
-                'dest': currentItem.jsfiles[0].dist.replace(concatFilename, ''),
-                'concatFilename': concatFilename
+                module: currentItem.module,
+                package: packageName,
+                sources: currentItem.jsfiles[0].sources,
+                dest: currentItem.jsfiles[0].dist.replace(concatFilename, ''),
+                concatFilename: concatFilename,
             });
         }
 
         if (currentItem.imgPath) {
             data.imagesPaths.push({
-                'module': currentItem.module,
-                'package': packageName,
-                'sources': path.join(currentItem.sources, currentItem.imgPath),
-                'dest': path.join(currentItem.dist, currentItem.imgPath)
+                module: currentItem.module,
+                package: packageName,
+                sources: path.join(currentItem.sources, currentItem.imgPath),
+                dest: path.join(currentItem.dist, currentItem.imgPath),
             });
 
             data.imagesSourcePath.push(path.join(currentItem.sources, currentItem.imgPath));
@@ -234,10 +237,10 @@ getPackages.prototype.build = function() {
 
         if (currentItem.fontPath) {
             data.fontsPaths.push({
-                'module': currentItem.module,
-                'package': packageName,
-                'sources': path.join(currentItem.sources, currentItem.fontPath),
-                'dest': path.join(currentItem.dist, currentItem.fontPath)
+                module: currentItem.module,
+                package: packageName,
+                sources: path.join(currentItem.sources, currentItem.fontPath),
+                dest: path.join(currentItem.dist, currentItem.fontPath),
             });
         }
 
@@ -255,7 +258,7 @@ getPackages.prototype.build = function() {
  * Get
  * @return {Object}
  */
-getPackages.prototype.get = function() {
+GetPackages.prototype.get = function() {
     return data.packages;
 };
 
@@ -263,10 +266,11 @@ getPackages.prototype.get = function() {
  * Get extra params by module
  * @return {Object|Boolean}
  */
-getPackages.prototype.getExtraParamsByModule = function(module) {
+GetPackages.prototype.getExtraParamsByModule = function(module) {
     if (data.extraParams[module]) {
         return data.extraParams[module];
     }
+
     return false;
 };
 
@@ -274,7 +278,7 @@ getPackages.prototype.getExtraParamsByModule = function(module) {
  * Get packages dist path
  * @return {Array}
  */
-getPackages.prototype.getPackagesDistPath = function() {
+GetPackages.prototype.getPackagesDistPath = function() {
     return data.packagesDistPath;
 };
 
@@ -282,7 +286,7 @@ getPackages.prototype.getPackagesDistPath = function() {
  * Get packages dist path without image directory
  * @return {Array}
  */
-getPackages.prototype.getPackagesDistPathWithoutImageDir = function() {
+GetPackages.prototype.getPackagesDistPathWithoutImageDir = function() {
     return data.packagesDistPathWithoutImageDir;
 };
 
@@ -290,7 +294,7 @@ getPackages.prototype.getPackagesDistPathWithoutImageDir = function() {
  * Get styles paths
  * @return {Array}
  */
-getPackages.prototype.getStylesPaths = function() {
+GetPackages.prototype.getStylesPaths = function() {
     return data.stylesPaths;
 };
 
@@ -300,7 +304,7 @@ getPackages.prototype.getStylesPaths = function() {
  * @param  {String} glob
  * @return {Array}
  */
-getPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
+GetPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
     glob = glob || path.join('**', '*.{scss,sass}');
     if (filepath) {
         var rs = [];
@@ -309,8 +313,10 @@ getPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
                 rs.push(data.stylesPaths[i]);
             }
         }
+
         return rs;
     }
+
     return data.stylesPaths;
 };
 
@@ -318,7 +324,7 @@ getPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
  * Get styles source path
  * @return {Array}
  */
-getPackages.prototype.getStylesSourcePath = function() {
+GetPackages.prototype.getStylesSourcePath = function() {
     return data.stylesSourcePath;
 };
 
@@ -327,12 +333,13 @@ getPackages.prototype.getStylesSourcePath = function() {
  * @param  {String} glob
  * @return {Array}
  */
-getPackages.prototype.getStylesSourcePathWithGlob = function(glob) {
+GetPackages.prototype.getStylesSourcePathWithGlob = function(glob) {
     glob = glob || path.join('**', '*.{scss,sass}');
     var rs = [];
     for (var i = 0, l = data.stylesSourcePath.length; i < l; i++) {
         rs.push(path.join(data.stylesSourcePath[i], glob));
     }
+
     return rs;
 };
 
@@ -340,7 +347,7 @@ getPackages.prototype.getStylesSourcePathWithGlob = function(glob) {
  * Get scripts source path
  * @return {Array}
  */
-getPackages.prototype.getScriptsSourcePath = function() {
+GetPackages.prototype.getScriptsSourcePath = function() {
     return data.scriptsSourcePath;
 };
 
@@ -348,7 +355,7 @@ getPackages.prototype.getScriptsSourcePath = function() {
  * Get scripts to build
  * @return {Array}
  */
-getPackages.prototype.getScriptsToBuild = function() {
+GetPackages.prototype.getScriptsToBuild = function() {
     return data.scriptsToBuild;
 };
 
@@ -356,7 +363,7 @@ getPackages.prototype.getScriptsToBuild = function() {
  * Get images paths
  * @return {Array}
  */
-getPackages.prototype.getImagesPaths = function() {
+GetPackages.prototype.getImagesPaths = function() {
     return data.imagesPaths;
 };
 
@@ -364,7 +371,7 @@ getPackages.prototype.getImagesPaths = function() {
  * Get images source path
  * @return {Array}
  */
-getPackages.prototype.getImagesSourcePath = function() {
+GetPackages.prototype.getImagesSourcePath = function() {
     return data.imagesSourcePath;
 };
 
@@ -373,12 +380,13 @@ getPackages.prototype.getImagesSourcePath = function() {
  * @param  {String} glob
  * @return {Array}
  */
-getPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
+GetPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
     glob = glob || path.join('**', '*.{png,jpg,jpeg,gif}');
     var rs = [];
     for (var i = 0, l = data.imagesSourcePath.length; i < l; i++) {
         rs.push(path.join(data.imagesSourcePath[i], glob));
     }
+
     return rs;
 };
 
@@ -386,7 +394,7 @@ getPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
  * Get fonts paths
  * @return {Array}
  */
-getPackages.prototype.getFontsPaths = function() {
+GetPackages.prototype.getFontsPaths = function() {
     return data.fontsPaths;
 };
 
@@ -398,13 +406,13 @@ getPackages.prototype.getFontsPaths = function() {
  * Utilities object
  * @type {Object}
  */
-getPackages.prototype.util = {};
+GetPackages.prototype.util = {};
 
 /**
  * Get css paths
  * @return {Array}
  */
-getPackages.prototype.getCssPaths = function(filepath, glob) {
+GetPackages.prototype.getCssPaths = function(filepath, glob) {
     deprecatedLog('getCssPaths', 'getStylesPathsByFilepath');
     return this.getStylesPathsByFilepath(filepath, glob);
 };
@@ -414,7 +422,7 @@ getPackages.prototype.getCssPaths = function(filepath, glob) {
  * @param  {String} glob
  * @return {Array}
  */
-getPackages.prototype.getAllCssPath = function(glob) {
+GetPackages.prototype.getAllCssPath = function(glob) {
     deprecatedLog('getAllCssPath', 'getStylesSourcePathWithGlob');
     return this.getStylesSourcePathWithGlob(glob);
 };
@@ -423,7 +431,7 @@ getPackages.prototype.getAllCssPath = function(glob) {
  * Get all js file
  * @return {Array}
  */
-getPackages.prototype.getAllJsFile = function() {
+GetPackages.prototype.getAllJsFile = function() {
     deprecatedLog('getAllJsFile', 'getScriptsSourcePath');
     return this.getScriptsSourcePath();
 };
@@ -432,7 +440,7 @@ getPackages.prototype.getAllJsFile = function() {
  * Get all dist path
  * @return {Array}
  */
-getPackages.prototype.getAllDistPath = function() {
+GetPackages.prototype.getAllDistPath = function() {
     deprecatedLog('getAllDistPath', 'getPackagesDistPath');
     return this.getPackagesDistPath();
 };
@@ -441,7 +449,7 @@ getPackages.prototype.getAllDistPath = function() {
  * Get build js
  * @return {Array}
  */
-getPackages.prototype.getBuildJs = function() {
+GetPackages.prototype.getBuildJs = function() {
     deprecatedLog('getBuildJs', 'getScriptsToBuild');
     return this.getScriptsToBuild();
 };
@@ -450,7 +458,7 @@ getPackages.prototype.getBuildJs = function() {
  * Get image paths
  * @return {Array}
  */
-getPackages.prototype.getImagePaths = function() {
+GetPackages.prototype.getImagePaths = function() {
     deprecatedLog('getImagePaths', 'getImagesPaths');
     return this.getImagesPaths();
 };
@@ -460,7 +468,7 @@ getPackages.prototype.getImagePaths = function() {
  * @param  {String} glob
  * @return {Array}
  */
-getPackages.prototype.getAllImagePaths = function(glob) {
+GetPackages.prototype.getAllImagePaths = function(glob) {
     deprecatedLog('getAllImagePaths', 'getImagesSourcePathWithGlob');
     return this.getImagesSourcePathWithGlob(glob);
 };
@@ -469,7 +477,7 @@ getPackages.prototype.getAllImagePaths = function(glob) {
  * Get font paths
  * @return {Array}
  */
-getPackages.prototype.getFontPaths = function() {
+GetPackages.prototype.getFontPaths = function() {
     deprecatedLog('getFontPaths', 'getFontsPaths');
     return this.getFontsPaths();
 };
@@ -481,7 +489,7 @@ getPackages.prototype.getFontPaths = function() {
  * @param  {Object} options
  * @return {Array}
  */
-getPackages.prototype.util.match = function(filepaths, patterns, options) {
+GetPackages.prototype.util.match = function(filepaths, patterns, options) {
     if (typeof filepaths === 'undefined' || typeof patterns === 'undefined') {
         return [];
     }
@@ -503,4 +511,4 @@ getPackages.prototype.util.match = function(filepaths, patterns, options) {
     });
 };
 
-module.exports = new getPackages();
+module.exports = new GetPackages();

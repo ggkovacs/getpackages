@@ -6,7 +6,7 @@ var path = require('path');
 var gp = require('../index.js').init({
     applicationPath: '',
     yiiPackagesCommand: 'cat ' + path.join(__dirname, 'data', 'packages.json'),
-    isAbsoluteCommandPath: false
+    isAbsoluteCommandPath: false,
 });
 var validDatas = require(path.join(__dirname, 'data', 'validDatas.json'));
 
