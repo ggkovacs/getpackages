@@ -14,5 +14,6 @@ childProcess.exec('npm install sync-exec', function(err, stdout) {
         console.log(err);
         process.exit(1);
     }
+
     console.log(stdout);
 });
