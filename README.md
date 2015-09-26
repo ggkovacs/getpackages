@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **2.1.2**
+Version: **2.1.3**
 
 Yii 1/2 Packages command Node.js wrapper
 
@@ -16,7 +16,7 @@ var gp = require('get-packages').init();
 
 ### Options
 
-Type: `String | Object | Null`
+Type: `String` | `Object` | `Null`
 
 Default:
 ```js
