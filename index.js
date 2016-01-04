@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Requires
- */
 var execSync = require('child_process').execSync;
 var minimatch = require('minimatch');
 var _ = require('lodash');
@@ -10,69 +7,39 @@ var path = require('path');
 var extend = require('extend');
 var chalk = require('chalk');
 
-/**
- * Defaults
- */
 var defaults = {
-    /**
-     * Application path
-     * @type {String}
-     */
     applicationPath: 'protected',
-
-    /**
-     * Yii packages command
-     * @type {String}
-     */
     yiiPackagesCommand: 'yiic packages',
-
-    /**
-     * Is absolute command path
-     * @type {Boolean}
-     */
     isAbsoluteCommandPath: true,
-
-    /**
-     * Verbose mode
-     * @type {Boolean}
-     */
-    verbose: false,
+    verbose: false
 };
 
-/**
- * Data
- * @type {Object}
- */
 var data = {
     packages: {},
-
     packagesDistPath: [],
     packagesDistPathWithoutImageDir: [],
-
     stylesPaths: [],
     stylesSourcePath: [],
-
     scriptsSourcePath: [],
     scriptsToBuild: [],
-
     imagesPaths: [],
     imagesSourcePath: [],
-
     fontsPaths: [],
-
-    extraParams: {},
+    extraParams: {}
 };
 
-/**
- * Get dirname
- * @return {String}
- */
+var getPackages = module.exports = {};
+
+getPackages.util = {};
+
 function getDirname() {
     var s1 = __dirname;
     var s2 = process.cwd();
     var dirname = '';
+    var i;
+    var l;
 
-    for (var i = 0, l = s1.length; i < l; i++) {
+    for (i = 0, l = s1.length; i < l; i++) {
         if (s1[i] === s2[i]) {
             dirname += s1[i];
         } else {
@@ -87,22 +54,22 @@ function getDirname() {
     return dirname;
 }
 
-/**
- * Process patterns
- * @param  {Array}   patterns
- * @param  {Function} fn
- * @return {Array}
- */
-function processPatterns(patterns, fn) {
+function processPatterns(patternsArg, fnArg) {
     var result = [];
+    var exclusion;
+    var matches;
+    var pattern;
 
-    _.flatten(patterns).forEach(function(pattern) {
-        var exclusion = pattern.indexOf('!') === 0;
+    _.flatten(patternsArg).forEach(function(p) {
+        pattern = p;
+        exclusion = pattern.indexOf('!') === 0;
+
         if (exclusion) {
             pattern = pattern.slice(1);
         }
 
-        var matches = fn(pattern);
+        matches = fnArg(pattern);
+
         if (exclusion) {
             result = _.difference(result, matches);
         } else {
@@ -113,45 +80,35 @@ function processPatterns(patterns, fn) {
     return result;
 }
 
-/**
- * Deprecated log
- * @param {String} deprecatedFunctionName
- * @param {String} functionName
- */
-function deprecatedLog(deprecatedFunctionName, functionName) {
-    console.log(chalk.red('This ' + deprecatedFunctionName + ' method was deprecated. ') + chalk.green('Use ' + functionName + ' instead.'));
+function deprecatedLog(deprecatedFunctionNameArg, functionNameArg) {
+    var message = '';
+
+    message += chalk.red('This ' + deprecatedFunctionNameArg + ' method was deprecated. ');
+    message += chalk.green('Use ' + functionNameArg + ' instead.');
+
+    console.log(message);
 }
 
-/**
- * Get packages
- */
-var GetPackages = function() {};
+getPackages.init = function(optionsArg) {
+    var command = '';
+    var packages;
 
-/**
- * Init
- * @param  {Object|String} options
- * @return {Object}
- */
-GetPackages.prototype.init = function(options) {
-    if (typeof options === 'string') {
-        defaults.applicationPath = options;
-    } else if (typeof options === 'object') {
-        defaults = extend(true, {}, defaults, options);
+    if (typeof optionsArg === 'string') {
+        defaults.applicationPath = optionsArg;
+    } else if (typeof optionsArg === 'object') {
+        defaults = extend(true, {}, defaults, optionsArg);
     }
 
-    var command = '';
     if (defaults.isAbsoluteCommandPath) {
         command = getDirname();
     }
 
     command = path.join(command, defaults.applicationPath, defaults.yiiPackagesCommand);
 
-    var packages;
-
     if (execSync) {
         try {
             packages = execSync(command, {
-                encoding: 'utf8',
+                encoding: 'utf8'
             });
 
             data.packages = JSON.parse(packages).packages;
@@ -177,13 +134,18 @@ GetPackages.prototype.init = function(options) {
     return this;
 };
 
-/**
- * Build
- */
-GetPackages.prototype.build = function() {
-    for (var i = 0, l = data.packages.length; i < l; i++) {
-        var currentItem = data.packages[i];
-        var packageName = currentItem.package || null;
+getPackages.build = function() {
+    var i;
+    var l;
+    var currentItem;
+    var packageName;
+    var sources;
+    var stylesPaths;
+    var concatFilename;
+
+    for (i = 0, l = data.packages.length; i < l; i++) {
+        currentItem = data.packages[i];
+        packageName = currentItem.package || null;
 
         data.packagesDistPath.push(currentItem.dist);
 
@@ -194,7 +156,7 @@ GetPackages.prototype.build = function() {
 
         if (currentItem.cssfiles) {
             if (Array.isArray(currentItem.cssfiles[0].sources)) {
-                var sources = currentItem.cssfiles[0].sources[0];
+                sources = currentItem.cssfiles[0].sources[0];
                 if (currentItem.cssfiles[0].sources.length > 1) {
                     sources = '{' + currentItem.cssfiles[0].sources.join(',') + '}';
                 }
@@ -202,7 +164,7 @@ GetPackages.prototype.build = function() {
                 currentItem.cssfiles[0].sources = path.join(currentItem.sources, sources);
             }
 
-            var stylesPaths = extend(true, {}, currentItem.cssfiles[0]);
+            stylesPaths = extend(true, {}, currentItem.cssfiles[0]);
             stylesPaths.module = currentItem.module;
             stylesPaths.package = packageName;
 
@@ -213,14 +175,14 @@ GetPackages.prototype.build = function() {
         if (currentItem.jsfiles) {
             data.scriptsSourcePath = data.scriptsSourcePath.concat(currentItem.jsfiles[0].sources);
 
-            var concatFilename = path.basename(currentItem.jsfiles[0].dist);
+            concatFilename = path.basename(currentItem.jsfiles[0].dist);
 
             data.scriptsToBuild.push({
                 module: currentItem.module,
                 package: packageName,
                 sources: currentItem.jsfiles[0].sources,
                 dest: currentItem.jsfiles[0].dist.replace(concatFilename, ''),
-                concatFilename: concatFilename,
+                concatFilename: concatFilename
             });
         }
 
@@ -229,7 +191,7 @@ GetPackages.prototype.build = function() {
                 module: currentItem.module,
                 package: packageName,
                 sources: path.join(currentItem.sources, currentItem.imgPath),
-                dest: path.join(currentItem.dist, currentItem.imgPath),
+                dest: path.join(currentItem.dist, currentItem.imgPath)
             });
 
             data.imagesSourcePath.push(path.join(currentItem.sources, currentItem.imgPath));
@@ -240,7 +202,7 @@ GetPackages.prototype.build = function() {
                 module: currentItem.module,
                 package: packageName,
                 sources: path.join(currentItem.sources, currentItem.fontPath),
-                dest: path.join(currentItem.dist, currentItem.fontPath),
+                dest: path.join(currentItem.dist, currentItem.fontPath)
             });
         }
 
@@ -254,62 +216,41 @@ GetPackages.prototype.build = function() {
     }
 };
 
-/**
- * Get
- * @return {Object}
- */
-GetPackages.prototype.get = function() {
+getPackages.get = function() {
     return data.packages;
 };
 
-/**
- * Get extra params by module
- * @return {Object|Boolean}
- */
-GetPackages.prototype.getExtraParamsByModule = function(module) {
-    if (data.extraParams[module]) {
-        return data.extraParams[module];
+getPackages.getExtraParamsByModule = function(moduleArg) {
+    if (data.extraParams[moduleArg]) {
+        return data.extraParams[moduleArg];
     }
 
     return false;
 };
 
-/**
- * Get packages dist path
- * @return {Array}
- */
-GetPackages.prototype.getPackagesDistPath = function() {
+getPackages.getPackagesDistPath = function() {
     return data.packagesDistPath;
 };
 
-/**
- * Get packages dist path without image directory
- * @return {Array}
- */
-GetPackages.prototype.getPackagesDistPathWithoutImageDir = function() {
+getPackages.getPackagesDistPathWithoutImageDir = function() {
     return data.packagesDistPathWithoutImageDir;
 };
 
-/**
- * Get styles paths
- * @return {Array}
- */
-GetPackages.prototype.getStylesPaths = function() {
+getPackages.getStylesPaths = function() {
     return data.stylesPaths;
 };
 
-/**
- * Get styles paths by file path
- * @param  {String} filepath
- * @param  {String} glob
- * @return {Array}
- */
-GetPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
-    glob = glob || path.join('**', '*.{scss,sass}');
-    if (filepath) {
-        var rs = [];
-        for (var i = 0, l = data.stylesPaths.length; i < l; i++) {
-            if (minimatch(filepath, path.join(data.stylesPaths[i].sources, glob))) {
+getPackages.getStylesPathsByFilepath = function(filepathArg, patternArg) {
+    var rs;
+    var i;
+    var l;
+    var pattern = patternArg || path.join('**', '*.{scss,sass}');
+
+    if (filepathArg) {
+        rs = [];
+
+        for (i = 0, l = data.stylesPaths.length; i < l; i++) {
+            if (minimatch(filepathArg, path.join(data.stylesPaths[i].sources, pattern))) {
                 rs.push(data.stylesPaths[i]);
             }
         }
@@ -320,81 +261,53 @@ GetPackages.prototype.getStylesPathsByFilepath = function(filepath, glob) {
     return data.stylesPaths;
 };
 
-/**
- * Get styles source path
- * @return {Array}
- */
-GetPackages.prototype.getStylesSourcePath = function() {
+getPackages.getStylesSourcePath = function() {
     return data.stylesSourcePath;
 };
 
-/**
- * Get styles source path with glob
- * @param  {String} glob
- * @return {Array}
- */
-GetPackages.prototype.getStylesSourcePathWithGlob = function(glob) {
-    glob = glob || path.join('**', '*.{scss,sass}');
+getPackages.getStylesSourcePathWithGlob = function(patternArg) {
     var rs = [];
-    for (var i = 0, l = data.stylesSourcePath.length; i < l; i++) {
-        rs.push(path.join(data.stylesSourcePath[i], glob));
+    var i;
+    var l;
+    var pattern = patternArg || path.join('**', '*.{scss,sass}');
+
+    for (i = 0, l = data.stylesSourcePath.length; i < l; i++) {
+        rs.push(path.join(data.stylesSourcePath[i], pattern));
     }
 
     return rs;
 };
 
-/**
- * Get scripts source path
- * @return {Array}
- */
-GetPackages.prototype.getScriptsSourcePath = function() {
+getPackages.getScriptsSourcePath = function() {
     return data.scriptsSourcePath;
 };
 
-/**
- * Get scripts to build
- * @return {Array}
- */
-GetPackages.prototype.getScriptsToBuild = function() {
+getPackages.getScriptsToBuild = function() {
     return data.scriptsToBuild;
 };
 
-/**
- * Get images paths
- * @return {Array}
- */
-GetPackages.prototype.getImagesPaths = function() {
+getPackages.getImagesPaths = function() {
     return data.imagesPaths;
 };
 
-/**
- * Get images source path
- * @return {Array}
- */
-GetPackages.prototype.getImagesSourcePath = function() {
+getPackages.getImagesSourcePath = function() {
     return data.imagesSourcePath;
 };
 
-/**
- * Get images source path with glob
- * @param  {String} glob
- * @return {Array}
- */
-GetPackages.prototype.getImagesSourcePathWithGlob = function(glob) {
-    glob = glob || path.join('**', '*.{png,jpg,jpeg,gif}');
+getPackages.getImagesSourcePathWithGlob = function(patternArg) {
     var rs = [];
-    for (var i = 0, l = data.imagesSourcePath.length; i < l; i++) {
-        rs.push(path.join(data.imagesSourcePath[i], glob));
+    var i;
+    var l;
+    var pattern = patternArg || path.join('**', '*.{png,jpg,jpeg,gif}');
+
+    for (i = 0, l = data.imagesSourcePath.length; i < l; i++) {
+        rs.push(path.join(data.imagesSourcePath[i], pattern));
     }
 
     return rs;
 };
 
-/**
- * Get fonts paths
- * @return {Array}
- */
-GetPackages.prototype.getFontsPaths = function() {
+getPackages.getFontsPaths = function() {
     return data.fontsPaths;
 };
 
@@ -402,94 +315,51 @@ GetPackages.prototype.getFontsPaths = function() {
 // BACKWARD COMPATIBLE METHODS
 // ****************************************
 
-/**
- * Utilities object
- * @type {Object}
- */
-GetPackages.prototype.util = {};
-
-/**
- * Get css paths
- * @return {Array}
- */
-GetPackages.prototype.getCssPaths = function(filepath, glob) {
+getPackages.getCssPaths = function(filepathArg, patternArg) {
     deprecatedLog('getCssPaths', 'getStylesPathsByFilepath');
-    return this.getStylesPathsByFilepath(filepath, glob);
+    return this.getStylesPathsByFilepath(filepathArg, patternArg);
 };
 
-/**
- * Get all css paths
- * @param  {String} glob
- * @return {Array}
- */
-GetPackages.prototype.getAllCssPath = function(glob) {
+getPackages.getAllCssPath = function(patternArg) {
     deprecatedLog('getAllCssPath', 'getStylesSourcePathWithGlob');
-    return this.getStylesSourcePathWithGlob(glob);
+    return this.getStylesSourcePathWithGlob(patternArg);
 };
 
-/**
- * Get all js file
- * @return {Array}
- */
-GetPackages.prototype.getAllJsFile = function() {
+getPackages.getAllJsFile = function() {
     deprecatedLog('getAllJsFile', 'getScriptsSourcePath');
     return this.getScriptsSourcePath();
 };
 
-/**
- * Get all dist path
- * @return {Array}
- */
-GetPackages.prototype.getAllDistPath = function() {
+getPackages.getAllDistPath = function() {
     deprecatedLog('getAllDistPath', 'getPackagesDistPath');
     return this.getPackagesDistPath();
 };
 
-/**
- * Get build js
- * @return {Array}
- */
-GetPackages.prototype.getBuildJs = function() {
+getPackages.getBuildJs = function() {
     deprecatedLog('getBuildJs', 'getScriptsToBuild');
     return this.getScriptsToBuild();
 };
 
-/**
- * Get image paths
- * @return {Array}
- */
-GetPackages.prototype.getImagePaths = function() {
+getPackages.getImagePaths = function() {
     deprecatedLog('getImagePaths', 'getImagesPaths');
     return this.getImagesPaths();
 };
 
-/**
- * Get all image paths
- * @param  {String} glob
- * @return {Array}
- */
-GetPackages.prototype.getAllImagePaths = function(glob) {
+getPackages.getAllImagePaths = function(patternArg) {
     deprecatedLog('getAllImagePaths', 'getImagesSourcePathWithGlob');
-    return this.getImagesSourcePathWithGlob(glob);
+    return this.getImagesSourcePathWithGlob(patternArg);
 };
 
-/**
- * Get font paths
- * @return {Array}
- */
-GetPackages.prototype.getFontPaths = function() {
+getPackages.getFontPaths = function() {
     deprecatedLog('getFontPaths', 'getFontsPaths');
     return this.getFontsPaths();
 };
 
-/**
- * Match
- * @param  {Array} filepaths
- * @param  {Array} patterns
- * @param  {Object} options
- * @return {Array}
- */
-GetPackages.prototype.util.match = function(filepaths, patterns, options) {
+getPackages.util.match = function(filepathsArg, patternsArg, optionsArg) {
+    var filepaths = filepathsArg;
+    var patterns = patternsArg;
+    var options = optionsArg;
+
     if (typeof filepaths === 'undefined' || typeof patterns === 'undefined') {
         return [];
     }
@@ -510,5 +380,3 @@ GetPackages.prototype.util.match = function(filepaths, patterns, options) {
         return minimatch.match(filepaths, pattern, options);
     });
 };
-
-module.exports = new GetPackages();
