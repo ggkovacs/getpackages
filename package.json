@@ -1,6 +1,6 @@
 {
   "name": "get-packages",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Yii Packages command Node.js wrapper",
   "main": "index.js",
   "scripts": {
