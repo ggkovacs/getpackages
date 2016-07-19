@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **3.0.1**
+Version: **4.0.0**
 
 Yii 1/2 Packages command Node.js wrapper
 
@@ -14,29 +14,35 @@ var gp = require('get-packages').init();
 
 ## API
 
-### Options
+### gp.init([options])
 
-Type: `String` | `Object` | `Null`
+#### Options
 
-Default:
-```js
-{
-    applicationPath: 'protected',
-    yiiPackagesCommand: 'yiic packages',
-    isAbsoluteCommandPath: true,
-    verbose: false
-}
-```
+Type: `String` | `Object`
 
-- `applicationPath` (String)
-- `yiiPackagesCommand` (String)
-- `isAbsoluteCommandPath` (Boolean)
-- `verbose` (Boolean)
+##### options.applicationPath
+
+- Type: `String`
+- Default: `protected`
+
+##### options.yiiPackagesCommand
+
+- Type: `String`
+- Default: `yiic packages`
+
+##### options.isAbsoluteCommandPath
+
+- Type: `Boolean`
+- Default: `true`
+
+##### options.verbose
+
+- Type: `Boolean`
+- Default: `false`
 
 ### Methods
 
 - gp.init(options)
-- gp.build()
 - gp.get()
 - gp.getPackagesDistPath()
 - gp.getPackagesDistPathWithoutImageDir()
@@ -45,6 +51,7 @@ Default:
 - gp.getStylesSourcePath()
 - gp.getStylesSourcePathWithGlob(glob)
 - gp.getScriptsSourcePath()
+- gp.getScriptsSourcePathWithoutFile()
 - gp.getScriptsToBuild()
 - gp.getImagesPaths()
 - gp.getImagesSourcePath()
