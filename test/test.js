@@ -1,12 +1,12 @@
 /* global describe, it */
 'use strict';
 
-var should = require('chai').should(); // jshint ignore:line
+var should = require('chai').should(); // eslint-disable-line no-unused-vars
 var path = require('path');
 var gp = require('../index.js').init({
     applicationPath: '',
     yiiPackagesCommand: 'cat ' + path.join(__dirname, 'data', 'packages.json'),
-    isAbsoluteCommandPath: false,
+    isAbsoluteCommandPath: false
 });
 var validDatas = require(path.join(__dirname, 'data', 'validDatas.json'));
 
@@ -66,6 +66,11 @@ describe('get-packages', function() {
         done();
     });
 
+    it('’getScriptsSourcePathWithoutFile’ function', function(done) {
+        validDatas.getScriptsSourcePathWithoutFile.should.deep.equal(gp.getScriptsSourcePathWithoutFile());
+        done();
+    });
+
     it('’getScriptsToBuild’ function', function(done) {
         validDatas.getScriptsToBuild.should.deep.equal(gp.getScriptsToBuild());
         done();
@@ -102,7 +107,7 @@ describe('get-packages', function() {
     });
 
     it('’getExtraParamsByModule’ function with no exists package', function(done) {
-        gp.getExtraParamsByModule('app.tablet').should.false; // jshint ignore:line
+        gp.getExtraParamsByModule('app.tablet').should.false; // eslint-disable-line no-unused-expressions
         done();
     });
 });

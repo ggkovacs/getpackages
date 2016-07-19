@@ -1,55 +1,62 @@
 {
- "packages" : [
+  "packages": [
     {
-       "fontPath" : "fonts",
-       "imgPath" : "img",
-       "jsfiles" : [
-          {
-             "sources" : [
-                "/sample/protected/assets/desktop/src/js/desktop-plugins.js",
-                "/sample/protected/assets/desktop/src/js/desktop.js"
-             ],
-             "dist" : "/sample/protected/assets/desktop/dist/js/combined.js"
-          }
-       ],
-       "dist" : "/sample/protected/assets/desktop/dist",
-       "cssfiles" : [
-          {
-             "sources" : "/sample/protected/assets/desktop/src/scss",
-             "dev" : "/sample/protected/assets/desktop/src/css",
-             "dist" : "/sample/protected/assets/desktop/dist/css"
-          }
-       ],
-       "sources" : "/sample/protected/assets/desktop/src",
-       "module" : "app.desktop",
-       "scssPath" : "scss"
+      "fontPath": "fonts",
+      "imgPath": "img",
+      "jsfiles": [
+        {
+          "sources": [
+            "/sample/protected/assets/desktop/src/js/desktop-plugins.js",
+            "/sample/protected/assets/desktop/src/js/desktop.js"
+          ],
+          "dist": "/sample/protected/assets/desktop/dist/js/combined.js"
+        },
+        {
+          "sources" : [
+            "/sample/protected/assets/desktop/src/js/vendor1.js",
+            "/sample/protected/assets/desktop/src/js/vendor2.js"
+          ],
+          "dist": "/sample/protected/assets/desktop/dist/js/vendor.js"
+        }
+      ],
+      "dist": "/sample/protected/assets/desktop/dist",
+      "cssfiles": [
+        {
+          "sources": "/sample/protected/assets/desktop/src/scss",
+          "dev": "/sample/protected/assets/desktop/src/css",
+          "dist": "/sample/protected/assets/desktop/dist/css"
+        }
+      ],
+      "sources": "/sample/protected/assets/desktop/src",
+      "module": "app.desktop",
+      "scssPath": "scss"
     },
     {
-       "fontPath" : "fonts",
-       "imgPath" : "img",
-       "jsfiles" : [
-          {
-             "sources" : [
-                "/sample/protected/assets/mobile/src/js/mobile-plugins.js",
-                "/sample/protected/assets/mobile/src/js/mobile.js"
-             ],
-             "dist" : "/sample/protected/assets/mobile/dist/js/combined.js"
-          }
-       ],
-       "dist" : "/sample/protected/assets/mobile/dist",
-       "cssfiles" : [
-          {
-             "sources" : "/sample/protected/assets/mobile/src/scss",
-             "dev" : "/sample/protected/assets/mobile/src/css",
-             "dist" : "/sample/protected/assets/mobile/dist/css"
-          }
-       ],
-       "sources" : "/sample/protected/assets/mobile/src",
-       "module" : "app.mobile",
-       "scssPath" : "scss",
-       "extraParams": {
+      "fontPath": "fonts",
+      "imgPath": "img",
+      "jsfiles": [
+        {
+          "sources": [
+            "/sample/protected/assets/mobile/src/js/mobile-plugins.js",
+            "/sample/protected/assets/mobile/src/js/mobile.js"
+          ],
+          "dist": "/sample/protected/assets/mobile/dist/js/combined.js"
+        }
+      ],
+      "dist": "/sample/protected/assets/mobile/dist",
+      "cssfiles": [
+        {
+          "sources": "/sample/protected/assets/mobile/src/scss",
+          "dev": "/sample/protected/assets/mobile/src/css",
+          "dist": "/sample/protected/assets/mobile/dist/css"
+        }
+      ],
+      "sources": "/sample/protected/assets/mobile/src",
+      "module": "app.mobile",
+      "scssPath": "scss",
+      "extraParams": {
         "ngAnnotate": true
-       }
+      }
     }
   ]
 }
