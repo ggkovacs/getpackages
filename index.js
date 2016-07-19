@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var extend = require('extend');
 var util = require('./lib/util.js');
