@@ -52,6 +52,7 @@ Type: `String` | `Object`
 - gp.getStylesSourcePathWithGlob(glob)
 - gp.getScriptsSourcePath()
 - gp.getScriptsSourcePathWithoutFile()
+- gp.getScriptsSourcePathWithGlob(glob)
 - gp.getScriptsToBuild()
 - gp.getImagesPaths()
 - gp.getImagesSourcePath()
