@@ -143,6 +143,14 @@
     "/sample/protected/assets/desktop/src/js",
     "/sample/protected/assets/mobile/src/js"
   ],
+  "getScriptsSourcePathWithGlob": [
+    "/sample/protected/assets/desktop/src/js/**/*.js",
+    "/sample/protected/assets/mobile/src/js/**/*.js"
+  ],
+  "getScriptsSourcePathWithGlobWithGlob": [
+    "/sample/protected/assets/desktop/src/js/**/*.es6",
+    "/sample/protected/assets/mobile/src/js/**/*.es6"
+  ],
   "getScriptsToBuild": [
     {
       "module": "app.desktop",

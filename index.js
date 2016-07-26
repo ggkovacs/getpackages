@@ -107,6 +107,18 @@ getPackages.getScriptsSourcePathWithoutFile = function() {
     return data.scriptsSourcePathWithoutFile;
 };
 
+getPackages.getScriptsSourcePathWithGlob = function(pattern) {
+    var rs = [];
+
+    pattern = pattern || path.join('**', '*.js');
+
+    for (var i = 0, l = data.scriptsSourcePathWithoutFile.length; i < l; i++) {
+        rs.push(path.join(data.scriptsSourcePathWithoutFile[i], pattern));
+    }
+
+    return rs;
+};
+
 getPackages.getScriptsToBuild = function() {
     return data.scriptsToBuild;
 };

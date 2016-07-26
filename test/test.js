@@ -71,6 +71,16 @@ describe('get-packages', function() {
         done();
     });
 
+    it('’getScriptsSourcePathWithGlob’ function without params', function(done) {
+        validDatas.getScriptsSourcePathWithGlob.should.deep.equal(gp.getScriptsSourcePathWithGlob());
+        done();
+    });
+
+    it('’getScriptsSourcePathWithGlob’ function with glob', function(done) {
+        validDatas.getScriptsSourcePathWithGlobWithGlob.should.deep.equal(gp.getScriptsSourcePathWithGlob(path.join('**', '*.es6')));
+        done();
+    });
+
     it('’getScriptsToBuild’ function', function(done) {
         validDatas.getScriptsToBuild.should.deep.equal(gp.getScriptsToBuild());
         done();
