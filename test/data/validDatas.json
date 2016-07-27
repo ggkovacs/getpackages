@@ -36,8 +36,6 @@
       ]
     },
     {
-      "fontPath": "fonts",
-      "imgPath": "img",
       "jsfiles": [
         {
           "sources": [
@@ -70,8 +68,7 @@
   "getPackagesDistPathWithoutImageDir": [
     "/sample/protected/assets/desktop/dist/*",
     "!/sample/protected/assets/desktop/dist/img",
-    "/sample/protected/assets/mobile/dist/*",
-    "!/sample/protected/assets/mobile/dist/img"
+    "/sample/protected/assets/mobile/dist/*"
   ],
   "getStylesPaths": [
     {
@@ -193,25 +190,16 @@
       "package": null,
       "sources": "/sample/protected/assets/desktop/src/img",
       "dest": "/sample/protected/assets/desktop/dist/img"
-    },
-    {
-      "module": "app.mobile",
-      "package": null,
-      "sources": "/sample/protected/assets/mobile/src/img",
-      "dest": "/sample/protected/assets/mobile/dist/img"
     }
   ],
   "getImagesSourcePath": [
-    "/sample/protected/assets/desktop/src/img",
-    "/sample/protected/assets/mobile/src/img"
+    "/sample/protected/assets/desktop/src/img"
   ],
   "getImagesSourcePathWithGlob": [
-    "/sample/protected/assets/desktop/src/img/**/*.{png,jpg,jpeg,gif}",
-    "/sample/protected/assets/mobile/src/img/**/*.{png,jpg,jpeg,gif}"
+    "/sample/protected/assets/desktop/src/img/**/*.{png,jpg,jpeg,gif}"
   ],
   "getImagesSourcePathWithGlobWithGlob": [
-    "/sample/protected/assets/desktop/src/img/**/*.svg",
-    "/sample/protected/assets/mobile/src/img/**/*.svg"
+    "/sample/protected/assets/desktop/src/img/**/*.svg"
   ],
   "getFontsPaths": [
     {
@@ -219,12 +207,6 @@
       "package": null,
       "sources": "/sample/protected/assets/desktop/src/fonts",
       "dest": "/sample/protected/assets/desktop/dist/fonts"
-    },
-    {
-      "module": "app.mobile",
-      "package": null,
-      "sources": "/sample/protected/assets/mobile/src/fonts",
-      "dest": "/sample/protected/assets/mobile/dist/fonts"
     }
   ],
   "getOtherPaths": [

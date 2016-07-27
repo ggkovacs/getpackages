@@ -36,8 +36,6 @@
       ]
     },
     {
-      "fontPath": "fonts",
-      "imgPath": "img",
       "jsfiles": [
         {
           "sources": [
