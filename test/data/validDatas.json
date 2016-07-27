@@ -29,7 +29,11 @@
       ],
       "sources": "/sample/protected/assets/desktop/src",
       "module": "app.desktop",
-      "scssPath": "scss"
+      "scssPath": "scss",
+      "otherpaths": [
+        "foo",
+        "baz/bar"
+      ]
     },
     {
       "fontPath": "fonts",
@@ -221,6 +225,20 @@
       "package": null,
       "sources": "/sample/protected/assets/mobile/src/fonts",
       "dest": "/sample/protected/assets/mobile/dist/fonts"
+    }
+  ],
+  "getOtherPaths": [
+    {
+      "module": "app.desktop",
+      "package": null,
+      "sources": "/sample/protected/assets/desktop/src/baz/bar",
+      "dest": "/sample/protected/assets/desktop/dist/baz/bar"
+    },
+    {
+      "module": "app.desktop",
+      "package": null,
+      "sources": "/sample/protected/assets/desktop/src/foo",
+      "dest": "/sample/protected/assets/desktop/dist/foo"
     }
   ],
   "getExtraParamsByModule": {
