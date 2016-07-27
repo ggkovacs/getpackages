@@ -29,7 +29,11 @@
       ],
       "sources": "/sample/protected/assets/desktop/src",
       "module": "app.desktop",
-      "scssPath": "scss"
+      "scssPath": "scss",
+      "otherpaths": [
+        "foo",
+        "baz/bar"
+      ]
     },
     {
       "fontPath": "fonts",

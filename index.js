@@ -147,6 +147,10 @@ getPackages.getFontsPaths = function() {
     return data.fontsPaths;
 };
 
+getPackages.getOtherPaths = function() {
+    return data.otherPaths;
+};
+
 // ****************************************
 // BACKWARD COMPATIBLE METHODS
 // ****************************************

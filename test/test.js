@@ -111,6 +111,11 @@ describe('get-packages', function() {
         done();
     });
 
+    it('’getOtherPaths’ function', function(done) {
+        validDatas.getOtherPaths.should.deep.equal(gp.getOtherPaths());
+        done();
+    });
+
     it('’getExtraParamsByModule’ function', function(done) {
         validDatas.getExtraParamsByModule.should.deep.equal(gp.getExtraParamsByModule('app.mobile'));
         done();
