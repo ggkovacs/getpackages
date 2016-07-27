@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **4.1.0**
+Version: **4.2.0**
 
 Yii 1/2 Packages command Node.js wrapper
 
@@ -58,6 +58,7 @@ Type: `String` | `Object`
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)
 - gp.getFontsPaths()
+- gp.getOtherPaths()
 - gp.getExtraParamsByModule(module)
 
 ### Backward compatible methods
