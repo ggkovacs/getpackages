@@ -58,7 +58,15 @@
       "module": "app.mobile",
       "scssPath": "scss",
       "extraParams": {
-        "ngAnnotate": true
+        "ngAnnotate": true,
+        "customPaths": {
+          "svg": {
+            "sources": ["svg/**/*.svg", "svg2/**/*.svg"]
+          },
+          "video": {
+            "sources": ["video/**/*.mp4", "video2/**/*.avi"]
+          }
+        }
       }
     }
   ],
@@ -173,6 +181,10 @@
       "module": "app.desktop",
       "package": null,
       "sources": [
+        "/sample/protected/assets/desktop/src/vendor/vendor1.js",
+        "/sample/protected/assets/desktop/src/vendor/vendor2.js"
+      ],
+      "transpiledSources": [
         "/sample/protected/assets/desktop/src/_transpiled/vendor/vendor1.js",
         "/sample/protected/assets/desktop/src/_transpiled/vendor/vendor2.js"
       ],
@@ -183,6 +195,10 @@
       "module": "app.desktop",
       "package": null,
       "sources": [
+        "/sample/protected/assets/desktop/src/js/desktop-plugins.js",
+        "/sample/protected/assets/desktop/src/js/desktop.js"
+      ],
+      "transpiledSources": [
         "/sample/protected/assets/desktop/src/_transpiled/js/desktop-plugins.js",
         "/sample/protected/assets/desktop/src/_transpiled/js/desktop.js"
       ],

@@ -171,6 +171,14 @@ getPackages.getOtherPaths = function() {
     return data.otherPaths;
 };
 
+getPackages.getCustomPaths = function(key) {
+    return data.customPaths[key];
+};
+
+getPackages.getCustomPathsWithGlob = function(key) {
+    return data.customPaths[key];
+};
+
 // ****************************************
 // BACKWARD COMPATIBLE METHODS
 // ****************************************

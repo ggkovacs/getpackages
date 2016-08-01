@@ -58,7 +58,15 @@
       "module": "app.mobile",
       "scssPath": "scss",
       "extraParams": {
-        "ngAnnotate": true
+        "ngAnnotate": true,
+        "customPaths": {
+          "svg": {
+            "sources": ["svg/**/*.svg", "svg2/**/*.svg"]
+          },
+          "video": {
+            "sources": ["video/**/*.mp4", "video2/**/*.avi"]
+          }
+        }
       }
     }
   ]
