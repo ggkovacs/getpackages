@@ -119,8 +119,28 @@ getPackages.getScriptsSourcePathWithGlob = function(pattern) {
     return rs;
 };
 
+getPackages.getScriptsSourcePathBeforeTranspiling = function() {
+    return data.scriptsSourcePathBeforeTranspiling;
+};
+
+getPackages.getScriptsSourcePathBeforeTranspilingWithGlob = function(pattern) {
+    var rs = [];
+
+    pattern = pattern || path.join('**', '*.js');
+
+    for (var i = 0, l = data.scriptsSourcePathBeforeTranspiling.length; i < l; i++) {
+        rs.push(path.join(data.scriptsSourcePathBeforeTranspiling[i], pattern));
+    }
+
+    return rs;
+};
+
 getPackages.getScriptsToBuild = function() {
     return data.scriptsToBuild;
+};
+
+getPackages.getScriptsToTranspiling = function() {
+    return data.scriptsToTranspiling;
 };
 
 getPackages.getImagesPaths = function() {

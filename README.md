@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **4.2.2**
+Version: **5.0.0**
 
 Yii 1/2 Packages command Node.js wrapper
 
@@ -53,7 +53,10 @@ Type: `String` | `Object`
 - gp.getScriptsSourcePath()
 - gp.getScriptsSourcePathWithoutFile()
 - gp.getScriptsSourcePathWithGlob(glob)
+- gp.getScriptsSourcePathBeforeTranspiling()
+- gp.getScriptsSourcePathBeforeTranspilingWithGlob(glob)
 - gp.getScriptsToBuild()
+- gp.getScriptsToTranspiling()
 - gp.getImagesPaths()
 - gp.getImagesSourcePath()
 - gp.getImagesSourcePathWithGlob(glob)

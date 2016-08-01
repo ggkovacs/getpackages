@@ -81,8 +81,28 @@ describe('get-packages', function() {
         done();
     });
 
+    it('’getScriptsSourcePathBeforeTranspiling’ function', function(done) {
+        validDatas.getScriptsSourcePathBeforeTranspiling.should.deep.equal(gp.getScriptsSourcePathBeforeTranspiling());
+        done();
+    });
+
+    it('’getScriptsSourcePathBeforeTranspilingWithGlob’ function without params', function(done) {
+        validDatas.getScriptsSourcePathBeforeTranspilingWithGlob.should.deep.equal(gp.getScriptsSourcePathBeforeTranspilingWithGlob());
+        done();
+    });
+
+    it('’getScriptsSourcePathBeforeTranspilingWithGlob’ function with glob', function(done) {
+        validDatas.getScriptsSourcePathBeforeTranspilingWithGlobWithGlob.should.deep.equal(gp.getScriptsSourcePathBeforeTranspilingWithGlob(path.join('**', '*.es6')));
+        done();
+    });
+
     it('’getScriptsToBuild’ function', function(done) {
         validDatas.getScriptsToBuild.should.deep.equal(gp.getScriptsToBuild());
+        done();
+    });
+
+    it('’getScriptsToTranspiling’ function', function(done) {
+        validDatas.getScriptsToTranspiling.should.deep.equal(gp.getScriptsToTranspiling());
         done();
     });
 
