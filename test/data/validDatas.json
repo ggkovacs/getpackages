@@ -184,10 +184,7 @@
         "/sample/protected/assets/desktop/src/vendor/vendor1.js",
         "/sample/protected/assets/desktop/src/vendor/vendor2.js"
       ],
-      "transpiledSources": [
-        "/sample/protected/assets/desktop/src/_transpiled/vendor/vendor1.js",
-        "/sample/protected/assets/desktop/src/_transpiled/vendor/vendor2.js"
-      ],
+      "transpiling": true,
       "dest": "/sample/protected/assets/desktop/dist/js",
       "concatFilename": "vendor.js"
     },
@@ -198,10 +195,7 @@
         "/sample/protected/assets/desktop/src/js/desktop-plugins.js",
         "/sample/protected/assets/desktop/src/js/desktop.js"
       ],
-      "transpiledSources": [
-        "/sample/protected/assets/desktop/src/_transpiled/js/desktop-plugins.js",
-        "/sample/protected/assets/desktop/src/_transpiled/js/desktop.js"
-      ],
+      "transpiling": true,
       "dest": "/sample/protected/assets/desktop/dist/js",
       "concatFilename": "combined.js"
     },
@@ -212,6 +206,7 @@
         "/sample/protected/assets/mobile/src/js/mobile-plugins.js",
         "/sample/protected/assets/mobile/src/js/mobile.js"
       ],
+      "transpiling": false,
       "dest": "/sample/protected/assets/mobile/dist/js",
       "concatFilename": "combined.js"
     }
@@ -219,15 +214,13 @@
   "getScriptsToTranspiling": [{
     "module": "app.desktop",
     "package": null,
-    "base": "/sample/protected/assets/desktop/src",
     "sources": "/sample/protected/assets/desktop/src/vendor",
-    "dest": "/sample/protected/assets/desktop/src/_transpiled"
+    "dest": "/sample/protected/assets/desktop/src/_transpiled/vendor"
   }, {
     "module": "app.desktop",
     "package": null,
-    "base": "/sample/protected/assets/desktop/src",
     "sources": "/sample/protected/assets/desktop/src/js",
-    "dest": "/sample/protected/assets/desktop/src/_transpiled"
+    "dest": "/sample/protected/assets/desktop/src/_transpiled/js"
   }],
   "getImagesPaths": [
     {
