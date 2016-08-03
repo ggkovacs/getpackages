@@ -10,10 +10,6 @@ var gp = require('../index.js').init({
 });
 var validDatas = require(path.join(__dirname, 'data', 'validDatas.json'));
 
-console.log(gp.getCustomPaths('svg'));
-console.log(gp.getCustomPaths('video'));
-console.log(gp.getCustomPaths('hello'));
-
 describe('get-packages', function() {
     it('’get’ function', function(done) {
         validDatas.get.should.deep.equal(gp.get());
@@ -145,8 +141,28 @@ describe('get-packages', function() {
         done();
     });
 
-    it('’getExtraParamsByModule’ function with no exists package', function(done) {
+    it('’getExtraParamsByModule’ function with no exists bundle', function(done) {
         gp.getExtraParamsByModule('app.tablet').should.false; // eslint-disable-line no-unused-expressions
+        done();
+    });
+
+    it('’getCustomPaths’ function', function(done) {
+        validDatas.getCustomPaths.should.deep.equal(gp.getCustomPaths('svg'));
+        done();
+    });
+
+    it('’getCustomPaths’ function with no exists bundle', function(done) {
+        gp.getCustomPaths('no-exists').should.deep.equal([]);
+        done();
+    });
+
+    it('`getCustomPathsWithGlob` function', function(done) {
+        validDatas.getCustomPathsWithGlob.should.deep.equal(gp.getCustomPathsWithGlob('video'));
+        done();
+    });
+
+    it('`getCustomPathsWithGlob` function with no exists bundle', function(done) {
+        gp.getCustomPathsWithGlob('no-exists').should.deep.equal([]);
         done();
     });
 });

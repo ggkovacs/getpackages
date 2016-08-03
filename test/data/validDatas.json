@@ -269,5 +269,21 @@
   ],
   "getExtraParamsByModule": {
     "ngAnnotate": true
-  }
+  },
+  "getCustomPaths": [{
+    "sources": [
+      "/sample/protected/assets/mobile/src/svg/**/*.svg",
+      "/sample/protected/assets/mobile/src/svg2/**/*.svg"
+    ],
+    "dev": "/sample/protected/assets/mobile/src/svg-sprite",
+    "dist": "/sample/protected/assets/mobile/dist/svg-sprite",
+    "params": {
+      "prefix": "icon-",
+      "filename": "icons.svg"
+    }
+  }],
+  "getCustomPathsWithGlob": [
+    "/sample/protected/assets/mobile/src/video/**/*.mp4",
+    "/sample/protected/assets/mobile/src/video2/**/*.avi"
+  ]
 }

@@ -63,6 +63,8 @@ Type: `String` | `Object`
 - gp.getFontsPaths()
 - gp.getOtherPaths()
 - gp.getExtraParamsByModule(module)
+- gp.getCustomPaths(key)
+- gp.getCustomPathsWithGlob(key)
 
 ### Backward compatible methods
 

@@ -82,15 +82,11 @@ getPackages.getStylesSourcePath = function() {
 };
 
 getPackages.getStylesSourcePathWithGlob = function(pattern) {
-    var rs = [];
-
     pattern = pattern || path.join('**', '*.{scss,sass}');
 
-    for (var i = 0, l = data.stylesSourcePath.length; i < l; i++) {
-        rs.push(path.join(data.stylesSourcePath[i], pattern));
-    }
-
-    return rs;
+    return data.stylesSourcePath.map(function(stylesSourcePath) {
+        return path.join(stylesSourcePath, pattern);
+    });
 };
 
 getPackages.getScriptsSourcePath = function() {
@@ -102,15 +98,11 @@ getPackages.getScriptsSourcePathWithoutFile = function() {
 };
 
 getPackages.getScriptsSourcePathWithGlob = function(pattern) {
-    var rs = [];
-
     pattern = pattern || path.join('**', '*.js');
 
-    for (var i = 0, l = data.scriptsSourcePathWithoutFile.length; i < l; i++) {
-        rs.push(path.join(data.scriptsSourcePathWithoutFile[i], pattern));
-    }
-
-    return rs;
+    return data.scriptsSourcePathWithoutFile.map(function(scriptsSourcePathWithoutFile) {
+        return path.join(scriptsSourcePathWithoutFile, pattern);
+    });
 };
 
 getPackages.getScriptsSourcePathBeforeTranspiling = function() {
@@ -118,15 +110,11 @@ getPackages.getScriptsSourcePathBeforeTranspiling = function() {
 };
 
 getPackages.getScriptsSourcePathBeforeTranspilingWithGlob = function(pattern) {
-    var rs = [];
-
     pattern = pattern || path.join('**', '*.js');
 
-    for (var i = 0, l = data.scriptsSourcePathBeforeTranspiling.length; i < l; i++) {
-        rs.push(path.join(data.scriptsSourcePathBeforeTranspiling[i], pattern));
-    }
-
-    return rs;
+    return data.scriptsSourcePathBeforeTranspiling.map(function(scriptsSourcePathBeforeTranspiling) {
+        return path.join(scriptsSourcePathBeforeTranspiling, pattern);
+    });
 };
 
 getPackages.getScriptsToBuild = function() {
@@ -146,15 +134,11 @@ getPackages.getImagesSourcePath = function() {
 };
 
 getPackages.getImagesSourcePathWithGlob = function(pattern) {
-    var rs = [];
-
     pattern = pattern || path.join('**', '*.{png,jpg,jpeg,gif}');
 
-    for (var i = 0, l = data.imagesSourcePath.length; i < l; i++) {
-        rs.push(path.join(data.imagesSourcePath[i], pattern));
-    }
-
-    return rs;
+    return data.imagesSourcePath.map(function(imagesSourcePath) {
+        return path.join(imagesSourcePath, pattern);
+    });
 };
 
 getPackages.getFontsPaths = function() {
@@ -166,11 +150,17 @@ getPackages.getOtherPaths = function() {
 };
 
 getPackages.getCustomPaths = function(key) {
-    return data.customPaths[key] || false;
+    return data.customPaths[key] || [];
 };
 
 getPackages.getCustomPathsWithGlob = function(key) {
-    return data.customPaths[key];
+    if (!data.customPaths[key]) {
+        return [];
+    }
+
+    return [].concat.apply([], data.customPaths[key].map(function(customPath) {
+        return customPath.sources;
+    }));
 };
 
 // ****************************************
