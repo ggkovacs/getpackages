@@ -10,6 +10,10 @@ var gp = require('../index.js').init({
 });
 var validDatas = require(path.join(__dirname, 'data', 'validDatas.json'));
 
+console.log(gp.getCustomPaths('svg'));
+console.log(gp.getCustomPaths('video'));
+console.log(gp.getCustomPaths('hello'));
+
 describe('get-packages', function() {
     it('’get’ function', function(done) {
         validDatas.get.should.deep.equal(gp.get());

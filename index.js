@@ -69,15 +69,9 @@ getPackages.getStylesPathsByFilepath = function(filepath, pattern) {
     pattern = pattern || path.join('**', '*.{scss,sass}');
 
     if (filepath) {
-        var rs = [];
-
-        for (var i = 0, l = data.stylesPaths.length; i < l; i++) {
-            if (minimatch(filepath, path.join(data.stylesPaths[i].sources, pattern))) {
-                rs.push(data.stylesPaths[i]);
-            }
-        }
-
-        return rs;
+        return data.stylesPaths.filter(function(stylesPath) {
+            return minimatch(filepath, path.join(stylesPath.sources, pattern));
+        });
     }
 
     return data.stylesPaths;
@@ -172,7 +166,7 @@ getPackages.getOtherPaths = function() {
 };
 
 getPackages.getCustomPaths = function(key) {
-    return data.customPaths[key];
+    return data.customPaths[key] || false;
 };
 
 getPackages.getCustomPathsWithGlob = function(key) {

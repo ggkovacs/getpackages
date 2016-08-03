@@ -61,10 +61,16 @@
         "ngAnnotate": true,
         "customPaths": {
           "svg": {
-            "sources": ["svg/**/*.svg", "svg2/**/*.svg"]
+            "sources": ["svg/**/*.svg", "svg2/**/*.svg"],
+            "dist": "svg-sprite",
+            "params": {
+              "prefix": "icon-",
+              "filename": "icons.svg"
+            }
           },
           "video": {
-            "sources": ["video/**/*.mp4", "video2/**/*.avi"]
+            "sources": ["video/**/*.mp4", "video2/**/*.avi"],
+            "dist": "videos"
           }
         }
       }
