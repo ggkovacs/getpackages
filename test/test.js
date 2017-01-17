@@ -1,4 +1,5 @@
 /* global describe, it */
+
 'use strict';
 
 var should = require('chai').should(); // eslint-disable-line no-unused-vars
