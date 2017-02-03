@@ -84,7 +84,7 @@ Type: `String` | `Object`
 * Yii 1/2 Packages command
 
 # License
-MIT © 2016 Gergely Kovács (gg.kovacs@gmail.com)
+MIT © 2017 Gergely Kovács (gg.kovacs@gmail.com)
 
 [npm-image]: https://badge.fury.io/js/get-packages.svg
 [npm-url]: https://npmjs.org/package/get-packages
