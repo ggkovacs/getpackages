@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **5.0.1**
+Version: **6.0.0**
 
 Yii 1/2 Packages command Node.js wrapper
 
@@ -84,7 +84,7 @@ Type: `String` | `Object`
 * Yii 1/2 Packages command
 
 # License
-MIT © 2018 Gergely Kovács (gg.kovacs@gmail.com)
+MIT © 2019 Gergely Kovács (gg.kovacs@gmail.com)
 
 [npm-image]: https://badge.fury.io/js/get-packages.svg
 [npm-url]: https://npmjs.org/package/get-packages

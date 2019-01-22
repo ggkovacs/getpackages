@@ -1,19 +1,19 @@
 'use strict';
 
-var childProcess = require('child_process');
-var execSync = childProcess.execSync;
+const childProcess = require('child_process');
+const { execSync } = childProcess;
 
 if (execSync) {
-    process.exit(0);
+  process.exit(0);
 }
 
 console.log('Install sync-exec module...');
 
-childProcess.exec('npm install sync-exec', function(err, stdout) {
-    if (err) {
-        console.log(err);
-        process.exit(1);
-    }
+childProcess.exec('npm install sync-exec', (err, stdout) => {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
 
-    console.log(stdout);
+  console.log(stdout);
 });
