@@ -1,5 +1,5 @@
 # Get packages [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-Version: **6.0.1**
+Version: **6.0.2**
 
 Yii 1/2 Packages command Node.js wrapper
 
