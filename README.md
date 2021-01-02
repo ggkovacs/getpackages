@@ -88,7 +88,7 @@ MIT © 2021 Gergely Kovács (gg.kovacs@gmail.com)
 
 [npm-image]: https://badge.fury.io/js/get-packages.svg
 [npm-url]: https://npmjs.org/package/get-packages
-[travis-image]: https://travis-ci.org/ggkovacs/getpackages.svg?branch=master
-[travis-url]: https://travis-ci.org/ggkovacs/getpackages
+[travis-image]: https://travis-ci.com/ggkovacs/getpackages.svg?branch=master
+[travis-url]: https://travis-ci.com/ggkovacs/getpackages
 [daviddm-image]: https://david-dm.org/ggkovacs/getpackages.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/ggkovacs/getpackages
